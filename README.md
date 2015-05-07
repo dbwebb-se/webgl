@@ -1,4 +1,4 @@
-Gametechnologies for the web - webgl
+Game technologies for the web - webgl
 ===================
 
 Course material for webgl-course, aimed at a swedish target audience as an introduction to web programmering for computer science students at University level. 
