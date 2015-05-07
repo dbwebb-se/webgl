@@ -7,7 +7,7 @@ Relased as part of a University course presented at:
 
 * http://dbwebb.se/webgl
 
-The usage of this repo is related to the dbwebb command, which has [some documentation](http://dbwebb.se/dbwebb-cli) and exists as a [separate repo](http://dbwebb.se/mosbth/dbwebb-cli).
+The usage of this repo is related to the dbwebb command, which has [some documentation](http://dbwebb.se/dbwebb-cli) and exists as a [separate repo](https://github.com/mosbth/dbwebb-cli).
 
 
 
