@@ -24,6 +24,8 @@ index.html
 
 ```
 
+The line ```<script type="text/javascript" src="main.js"></script>``` includes the javascript file
+
 main.js
 
 ```javascript
@@ -35,5 +37,3 @@ window.onload = function() {
     console.log("Everything is ready.");
 }();
 ```
-
-The following line ```<script type="text/javascript" src="main.js"></script>``` includes the javascript file
