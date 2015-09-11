@@ -24,4 +24,16 @@ index.html
 
 ```
 
+main.js
+
+```javascript
+window.onload = function() {
+    "use strict";
+
+    // Write your javascript code here
+
+    console.log("Everything is ready.");
+}();
+```
+
 The following line ```<script type="text/javascript" src="main.js"></script>``` includes the javascript file
