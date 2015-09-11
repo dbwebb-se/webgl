@@ -1,0 +1,47 @@
+html {
+    background-color: #ccc;
+}    
+
+main {
+    margin: 8px auto;
+    width: 900px;
+    background-color: #eee;
+    padding: 1em;
+    border: 1px solid #999;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 5px #999;
+}
+
+#canvas1 {
+    display: block;
+    margin: 20px auto;
+    border:1px solid #999;
+    background-color: #fff;
+}
+
+
+#canvas1:fullscreen {
+
+}
+
+#canvas1:fullscreen::backdrop {
+    background-color: #006;
+}
+
+/**
+ * Resize on fullscreen not consistent.
+ */
+/*
+:-webkit-full-screen {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: none;
+}
+ 
+:-ms-fullscreen {
+    width: auto;
+    height: auto;
+    margin: auto;
+}
+*/
