@@ -26,7 +26,7 @@ window.onload = function() {
 
 
     function start() {
-        var canvas = document.getElementById("glcanvas");
+        var canvas = document.getElementById("canvas1");
 
         gl = initWebGL(canvas);      // Initialize the GL context
 
@@ -38,7 +38,7 @@ window.onload = function() {
             gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);      // Clear the color as well as the depth buffer.
         }
     }
-
+    start();
 
     console.log("Everything is ready.");
 }();
