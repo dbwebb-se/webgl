@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Show off model</title>
+</head>
+<body>
+    <main>
+        <h1>Load your .obj and .mtl and brag about it!</h1>
+        <canvas id="canvas1" width="800" height="500"></canvas>
+        <p>Put your object and materials in the folder called: <strong>"objects/"</strong>. Make sure that your .mtl-file points to working paths. Inits with default (castle.obj, castle.mtl)
+        <p>Name of .obj-file: <input field="text" id="objFile" value=""> (.obj)</p>
+        <p>Name of .mtl-file: <input field="text" id="mtlFile" value=""> (.mtl)</p>
+        <p><button id="showBtn">Show me</button></p>
+        <p>Choose an existing object:
+        <select id="selBox">
+            <option value="default">-- Choose --</option>
+            <option value="castle">Castle</option>
+            <option value="Puss_in_Boots">Cat</option>
+        <select>
+        </p>
+    </main>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r72/three.min.js"></script>
+
+    <script type="text/javascript" src="OrbitControls.js"></script>
+    <script type="text/javascript" src="http://threejs.org/examples/js/loaders/MTLLoader.js"></script>
+    <script type="text/javascript" src="http://threejs.org/examples/js/loaders/OBJMTLLoader.js"></script>
+    <script type="text/javascript" src="Detector.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
