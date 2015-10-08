@@ -1,0 +1,21 @@
+html {
+    background-color: #ccc;
+    overflow: hidden;
+}
+
+main {
+    margin: 8px auto;
+    width: 900px;
+    background-color: #eee;
+    padding: 1em;
+    border: 1px solid #999;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 5px #999;
+}
+
+#canvas1 {
+    display: block;
+    margin: 20px auto;
+    border:1px solid #999;
+    background-color: #000;
+}
