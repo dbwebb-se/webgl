@@ -5,7 +5,7 @@ window.onload = function() {
     "use strict";
 
     var canvas = document.getElementById("canvas1");
-    var height = canvas.innerHeight, width = canvas.innerWidth;
+    var height = canvas.clientHeight, width = canvas.clientWidth;
     var objFile, mtlFile;
     var showBtn = document.getElementById("showBtn");
     var selBox = document.getElementById("selBox");
@@ -33,10 +33,11 @@ window.onload = function() {
                 SCREEN_HEIGHT = window.innerHeight;
 
             // Prepare camera
-            var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 1, FAR = 2000;
+            var VIEW_ANGLE = 45, ASPECT = width / height, NEAR = 0.1, FAR = 2000;
             this.camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR );
             this.scene.add(this.camera);
-            this.camera.position.set(0, 100, 300);
+            this.camera.position.set(0, 10, 50);
+
             this.camera.lookAt(new THREE.Vector3(0, 0, 0));
 
             // Prepare renderer
@@ -47,9 +48,7 @@ window.onload = function() {
             this.renderer.shadowMapSoft = true;
 
             // Prepare container
-            /*
-            we use the canvas created so this is obsolete
-            */
+            //this.container = document.body;
 
             // Prepare controls
             this.controls = new THREE.OrbitControls(this.camera, canvas);
@@ -70,8 +69,9 @@ window.onload = function() {
             // Add spotlight
             // add directional light
             var dLight = new THREE.DirectionalLight(0xffffff, 1.5);
+
             dLight.castShadow = true;
-            dLight.position.set(500, 1000, 500);
+            dLight.position.set(1, 1, 1);
             this.scene.add(dLight);
 
             // Load the model
@@ -81,13 +81,20 @@ window.onload = function() {
             // prepare loader and load the model
             var oLoader = new THREE.OBJMTLLoader();
             oLoader.load('objects/' + objFile + '.obj', 'objects/' + mtlFile + '.mtl', function(object) {
-
-            object.position.x = -200;
+            object.position.x = 0;
             object.position.y = 0;
-            object.position.z = 100;
-            object.scale.set(0.1, 0.1, 0.1);
+            object.position.z = 0;
+            object.scale.set(1, 1, 1);
             myObj.scene.add(object);
-        });
+        },
+    	// Function called when downloads progress
+    	function ( xhr ) {
+    		console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+    	},
+    	// Function called when downloads error
+    	function ( xhr ) {
+    		console.log( 'An error happened' );
+    	});
         }
     };
 
@@ -131,6 +138,14 @@ window.onload = function() {
         } else {
             console.log("None chosen");
         }
+    });
+
+    canvas.addEventListener('resize', function () {
+        canvas.width  = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+        myObj.renderer.setViewport(0, 0, canvas.clientWidth, canvas.clientHeight);
+        myObj.camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        myObj.camera.updateProjectionMatrix();
     });
 
     //init();
