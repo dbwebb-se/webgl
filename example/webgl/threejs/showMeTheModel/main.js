@@ -71,7 +71,7 @@ window.onload = function() {
             var dLight = new THREE.DirectionalLight(0xffffff, 1.5);
 
             dLight.castShadow = true;
-            dLight.position.set(1, 1, 1);
+            dLight.position.set(-100, 100, -50);
             this.scene.add(dLight);
 
             // Load the model

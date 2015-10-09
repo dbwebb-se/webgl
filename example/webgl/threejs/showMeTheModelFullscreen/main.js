@@ -4,9 +4,6 @@
 window.onload = function() {
     "use strict";
 
-    var objFile, mtlFile;
-    var selBox = document.getElementById("selBox");
-
     var myObj = {
         scene: null,
         camera: null,
@@ -17,10 +14,6 @@ window.onload = function() {
         stats: null,
 
         init: function() {
-
-            // EXTRA Get the chosen files
-            // objFile = document.getElementById("objFile").value;
-            // mtlFile = document.getElementById("mtlFile").value;
 
             // Create the main scene
             this.scene = new THREE.Scene();
@@ -68,13 +61,12 @@ window.onload = function() {
             this.stats.domElement.style.zIndex = 1;
             this.container.appendChild( this.stats.domElement );
 
-            // Add spotlight
-            // add directional light
-            var dLight = new THREE.DirectionalLight(0xffffff, 1.5);
+            // Add pointlight
+            var pLight = new THREE.PointLight(0xffffff, 1, 500);
 
-            dLight.castShadow = true;
-            dLight.position.set(1, 1, 1);
-            this.scene.add(dLight);
+            pLight.position.set(0, 0.5, 0.2);
+
+            this.camera.add(pLight);
 
             // Load the model
             this.loadModel();
@@ -82,11 +74,7 @@ window.onload = function() {
         loadModel: function() {
             // prepare loader and load the model
             var oLoader = new THREE.OBJMTLLoader();
-            oLoader.load('objects/' + objFile + '.obj', 'objects/' + mtlFile + '.mtl', function(object) {
-            object.position.x = 0;
-            object.position.y = 0;
-            object.position.z = 0;
-            object.scale.set(1, 1, 1);
+            oLoader.load('objects/BTHRobot.obj', 'objects/BTHRobot.mtl', function(object) {
             myObj.scene.add(object);
         },
     	// Function called when downloads progress
@@ -126,17 +114,6 @@ window.onload = function() {
         animate();
     }
 
-    selBox.addEventListener("change", function() {
-        if (selBox.value != "default") {
-            objFile = selBox.value;
-            mtlFile = selBox.value;
-            document.body.innerHTML = "";
-            document.body.style.margin = 0;
-            init();
-        } else {
-            console.log("None chosen");
-        }
-    });
-
+    init();
     console.log("Everything is ready.");
 }();
