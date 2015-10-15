@@ -16,5 +16,9 @@ window.onload = function() {
     ct.font = "48px serif";
     ct.strokeText("My Canvas Sandbox", 10, 50);
 
-    console.log("Everything is ready.");  
+    // Draw a rectangle
+    ct.fillStyle = "green";
+    ct.fillRect(100, 100, 200, 300);
+
+    console.log("Everything is ready.");
 }();
