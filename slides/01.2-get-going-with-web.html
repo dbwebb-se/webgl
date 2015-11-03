@@ -82,14 +82,24 @@ $ dbwebb publish kmom01
 
 
 <script data-role="slide" type="text/html">
+<h1>Kursrepo finns på dbwebb</h1>
+<p>http://dbwebb.se/webgl/repo</p>
+</script>
+
+
+
+<script data-role="slide" type="text/html">
+<iframe src="http://dbwebb.se/webgl/repo" style="background-color: #fff;" width="1024" height="768" frameborder="0"></iframe>
+</script>
+
+
+
+<script data-role="slide" type="text/html">
 <h1>Vägen till webgl</h1>
 <ul>
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>JavaScript</li>
+    <li>HTML, CSS, JavaScript, Canvas</li>
     <li>Webbläsare och mobila enheter</li>
     <li>Webbservrar</li>
-    <li>Canvas</li>
     <li><strike>Kunskap i 3D-programmering</strike></li>
 </ul>
 </script>
@@ -144,39 +154,6 @@ sandbox/
 
 
 <script data-role="slide" type="text/html">
-<h1>JavaScript</h1>
-<pre data-code="main.js"></pre>
-</script>
-
-
-
-<script id="main.js" data-role="code" data-language="javascript" type="text/html">
-window.onload = function() {
-    "use strict";
-
-    var canvas, ct;
-
-    // Get the HTML element to work with
-    canvas = document.getElementById("canvas1");
-
-    // Create a 2D context on the canvas
-    ct = canvas.getContext("2d");
-
-    // Draw a text on canvas
-    ct.font = "48px serif";
-    ct.strokeText("My Canvas Sandbox", 10, 50);
-
-    // Draw a rectangle
-    ct.fillStyle = "green";
-    ct.fillRect(100, 100, 200, 300);
-
-    console.log("Everything is ready.");
-}();
-</script>
-
-
-
-<script data-role="slide" type="text/html">
 <h1>CSS</h1>
 <pre data-code="style.css"></pre>
 </script>
@@ -209,6 +186,39 @@ footer {
     border:1px solid #999;
     background-color: #fff;
 }
+</script>
+
+
+
+<script data-role="slide" type="text/html">
+<h1>JavaScript</h1>
+<pre data-code="main.js"></pre>
+</script>
+
+
+
+<script id="main.js" data-role="code" data-language="javascript" type="text/html">
+window.onload = function() {
+    "use strict";
+
+    var canvas, ct;
+
+    // Get the HTML element to work with
+    canvas = document.getElementById("canvas1");
+
+    // Create a 2D context on the canvas
+    ct = canvas.getContext("2d");
+
+    // Draw a text on canvas
+    ct.font = "48px serif";
+    ct.strokeText("My Canvas Sandbox", 10, 50);
+
+    // Draw a rectangle
+    ct.fillStyle = "green";
+    ct.fillRect(100, 100, 200, 300);
+
+    console.log("Everything is ready.");
+}();
 </script>
 
 
