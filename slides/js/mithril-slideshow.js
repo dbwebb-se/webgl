@@ -3,35 +3,56 @@
  *
  */
 
-// Prepare all code blocks
-var codeElements = document.querySelectorAll('[data-role="code"]');
-
-for (var item of codeElements) {
-    var language = item.dataset.language
-    hljs.configure({
-        languages: [language]
-    });
-    hljs.highlightBlock(item);
-}
-
-
- 
-// namespace
+ /**
+  * Namespace
+  */
 var app = {};
 
 
 
-// config
+/**
+ * Prepare all code blocks for syntax highlightning.
+ */
+app.initCodeBlocks = function() {
+    var codeElements = document.querySelectorAll('[data-role="code"]');
+
+    for (var i = 0; i < codeElements.length; ++i) {
+      var item = codeElements[i],
+          language = item.dataset.language;
+
+      hljs.configure({
+          languages: [language]
+      });
+
+      hljs.highlightBlock(item);
+    }
+}
+
+
+
+/**
+ * Prepare all code blocks for syntax highlightning.
+ */
+app.loadCodeBlocksIntoSlide = function() {
+    var codeElements = document.querySelectorAll('[data-code]');
+
+    for (var i = 0; i < codeElements.length; ++i) {
+        var item = codeElements[i],
+            code = document.getElementById(item.dataset.code);
+
+        item.innerHTML = code.innerHTML.substr(1); // Exclude first \n
+    }
+}
+
+
+
+/**
+ * Config
+ */
 app.config = function(ctrl) {
     return function(element, isInitialized) {
 
-        // Get and format code elements
-        var codeElements = document.querySelectorAll('[data-code]');
-
-        for (var item of codeElements) {
-            var code = document.getElementById(item.dataset.code);
-            item.innerHTML = code.innerHTML.substr(1);
-        }
+        app.loadCodeBlocksIntoSlide();
 
         if (!isInitialized) {
             function navigate(event) {
@@ -86,12 +107,20 @@ app.config = function(ctrl) {
     };
 };
 
-//model
+
+
+/**
+ * Model
+ */
 app.SlideList = function() {
     return document.querySelectorAll('[data-role="slide"]');
 };
 
-//controller
+
+
+/**
+ * Controller
+ */
 app.controller = function() {
     var slides = app.SlideList();
     var current = 0;
@@ -110,7 +139,11 @@ app.controller = function() {
     };
 };
 
-//view
+
+
+/**
+ * View
+ */
 app.view = function(ctrl) {
     var slide = ctrl.currentSlide();
     //console.log(slide);
@@ -122,7 +155,9 @@ app.view = function(ctrl) {
 
 
 
-
-//initialize
+/**
+ * Initialize
+ */
+app.initCodeBlocks();
 document.body = document.createElement("body");
 m.module(document.body, app);
