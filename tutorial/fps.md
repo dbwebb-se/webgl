@@ -1,5 +1,7 @@
 # Display FPS  
 
+main.js
+
 ```javascript  
 
     var fps_time = 0;       // Skapa variablerna som behövs
@@ -26,4 +28,14 @@
         return newAngle %= 360;
     };
 
+```
+
+index.html  
+
+```html
+...
+
+<div>FPS: <span id="fps">Här kommer FPS visas</span></div>
+
+...
 ```
