@@ -399,7 +399,7 @@ var WebGLUtils = (function() {
     /**
      * Provides requestAnimationFrame in a cross browser way.
      */
-    exports.requestAnimFrame = (function() {
+    window.requestAnimFrame = (function() {
       return window.requestAnimationFrame ||
              window.webkitRequestAnimationFrame ||
              window.mozRequestAnimationFrame ||
@@ -413,7 +413,7 @@ var WebGLUtils = (function() {
     /**
      * Provides cancelRequestAnimationFrame in a cross browser way.
      */
-    exports.cancelRequestAnimFrame = (function() {
+    window.cancelRequestAnimFrame = (function() {
       return window.cancelCancelRequestAnimationFrame ||
              window.webkitCancelRequestAnimationFrame ||
              window.mozCancelRequestAnimationFrame ||

@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Sandbox for WebGL</title>
+    <title>Sandbox for WebGL v3</title>
 </head>
 <body>
 <main>
-    <h1>Transform (rotate, scale, translate) (reload ro randomize)</h1>
+    <h1>Sandbox for WebGL (reload ro randomize)</h1>
     <canvas id="canvas" class="canvas" width="800" height="500"></canvas>
 </main>
 
@@ -26,10 +26,10 @@
 <script id="vertex-shader" type="x-shader/x-vertex">
 
 attribute vec4 a_Position;
-uniform mat4 u_Transform;
+uniform vec4 u_Translation;
 
 void main() {
-    gl_Position = u_Transform * a_Position;
+    gl_Position = a_Position + u_Translation;
 }
 
 </script>
