@@ -14,10 +14,10 @@ var app = {};
  * Prepare all code blocks for syntax highlightning.
  */
 app.initCodeBlocks = function() {
-    var codeElements = document.querySelectorAll('[data-role="code"]');
+    var elements = document.querySelectorAll('[data-role="code"]');
 
-    for (var i = 0; i < codeElements.length; ++i) {
-      var item = codeElements[i],
+    for (var i = 0; i < elements.length; ++i) {
+      var item = elements[i],
           language = item.dataset.language;
 
       hljs.configure({
@@ -26,7 +26,7 @@ app.initCodeBlocks = function() {
 
       hljs.highlightBlock(item);
     }
-}
+};
 
 
 
@@ -34,15 +34,61 @@ app.initCodeBlocks = function() {
  * Prepare all code blocks for syntax highlightning.
  */
 app.loadCodeBlocksIntoSlide = function() {
-    var codeElements = document.querySelectorAll('[data-code]');
+    var elements = document.querySelectorAll('[data-code]');
 
-    for (var i = 0; i < codeElements.length; ++i) {
-        var item = codeElements[i],
+    for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i],
             code = document.getElementById(item.dataset.code);
 
         item.innerHTML = code.innerHTML.substr(1); // Exclude first \n
     }
-}
+};
+
+
+
+/**
+ * Prepare all Markdown blocks.
+ */
+app.initMarkdown = function() {
+    var elements = document.querySelectorAll('[data-markdown]'),
+        converter = new showdown.Converter({tables: true});
+
+    for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+
+        item.innerHTML = converter.makeHtml(item.innerHTML);
+    }
+};
+
+
+
+/**
+ * Enter fullscreen.
+ */
+app.enterFullscreen = function(element) {
+    if (element.webkitRequestFullScreen &&  !document.webkitFullscreenElement) {
+        element.webkitRequestFullScreen();
+    } else if (element.mozRequestFullScreen && !document.mozFullScreenElement) {
+        element.mozRequestFullScreen();
+    } else if (element.msRequestFullscreen && !document.msFullscreenElement) {
+        element.msRequestFullscreen();
+    }
+};
+
+
+
+/**
+ * Exit fullscreen.
+ */
+app.exitFullscreen = function() {
+    if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+    }
+};
 
 
 
@@ -70,22 +116,10 @@ app.config = function(ctrl) {
                         play(true);
                     break;
                     case 70:  //f
-                        if (element.webkitRequestFullScreen &&  !document.webkitFullscreenElement) {
-                            element.webkitRequestFullScreen();
-                        } else if (element.mozRequestFullScreen && !document.mozFullScreenElement) {
-                            element.mozRequestFullScreen();
-                        } else if (element.msRequestFullscreen && !document.msFullscreenElement) {
-                            element.msRequestFullscreen();
-                        }
+                        app.enterFullscreen(element);
                     break;
                     case 190:  //Period
-                        if (document.webkitExitFullscreen) {
-                            document.webkitExitFullscreen();
-                        } else if (document.mozCancelFullScreen) {
-                            document.mozCancelFullScreen();
-                        } else if (document.msExitFullscreen) {
-                            document.msExitFullscreen();
-                        }
+                        app.exitFullscreen();
                     break;
                     default:
                         return;
@@ -102,7 +136,7 @@ app.config = function(ctrl) {
             window.onclick       = navigate;
             window.onkeydown     = navigate;
             window.ontouchend    = navigate;
-            window.oncontextmenu = function() { return false };
+            //window.oncontextmenu = function() { return false };
         };
     };
 };
@@ -112,7 +146,7 @@ app.config = function(ctrl) {
 /**
  * Model
  */
-app.SlideList = function() {
+app.slideList = function() {
     return document.querySelectorAll('[data-role="slide"]');
 };
 
@@ -122,7 +156,7 @@ app.SlideList = function() {
  * Controller
  */
 app.controller = function() {
-    var slides = app.SlideList();
+    var slides = app.slideList();
     var current = 0;
 
     return {
@@ -146,8 +180,6 @@ app.controller = function() {
  */
 app.view = function(ctrl) {
     var slide = ctrl.currentSlide();
-    //console.log(slide);
-    //return m("div#objects", m.trust(slide.innerHTML));
     return m("div#slide", { config: app.config(ctrl) }, [
         m("div#objects", m.trust(slide.innerHTML))
     ]);
@@ -159,5 +191,6 @@ app.view = function(ctrl) {
  * Initialize
  */
 app.initCodeBlocks();
+app.initMarkdown();
 document.body = document.createElement("body");
 m.module(document.body, app);

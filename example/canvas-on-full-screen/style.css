@@ -14,8 +14,6 @@ main {
 
 #canvas1 {
     display: block;
-    margin: 20px auto;
-    border:1px solid #999;
     background-color: #fff;
 }
 
@@ -27,6 +25,7 @@ main {
 #canvas1:fullscreen::backdrop {
     background-color: #006;
 }
+
 
 /**
  * Resize on fullscreen not consistent.
