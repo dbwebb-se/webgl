@@ -1,0 +1,49 @@
+html {
+    background-color: #ccc;
+}
+
+main {
+    margin: 8px auto;
+    width: 900px;
+    background-color: #eee;
+    padding: 1em;
+    border: 1px solid #999;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 5px #999;
+    overflow: auto;
+}
+
+footer {
+    padding-top: 1em;
+    text-align: center;
+}
+
+.form {
+    margin-top: 20px;
+    margin-right: 20px;
+    background-color: white;
+    font-family: Arial;
+    width: 300px;
+    height: 300px;
+    border: 1px solid gray;
+    padding: 10px;
+    display: inline-block;
+    float: left;
+}
+
+.result {
+    margin-top: 20px;
+    background-color: white;
+    font-family: Arial;
+    width: 300px;
+    height: 300px;
+    border: 1px solid gray;
+    padding: 10px;
+    display: inline-block;
+    float: left;
+}
+
+form>label {
+    display: block;
+    margin: 5px;
+}
