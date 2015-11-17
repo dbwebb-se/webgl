@@ -4,14 +4,15 @@ git:
 
 
 before_install:
-    mkdir bin
-    wget -O bin/dbwebb https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2
-    wget -O bin/dbwebb-validate https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2-validate
+    - mkdir bin
     
-    chmod 755 bin/dbwebb bin/dbwebb-validate
+    - wget -O bin/dbwebb https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2
+    - wget -O bin/dbwebb-validate https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2-validate
+    
+    - chmod 755 bin/dbwebb bin/dbwebb-validate
 
 
 
 script:
-    ./bin/dbwebb --version
-    ./bin/dbwebb-validate --version
+    - ./bin/dbwebb --version
+    - ./bin/dbwebb-validate --version
