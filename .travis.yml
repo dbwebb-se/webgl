@@ -1,9 +1,15 @@
+git:
+    submodules: false
+
+
+
 before_install:
     mkdir bin
     wget -O bin/dbwebb https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2
     wget -O bin/dbwebb-validate https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2-validate
     
     chmod 755 bin/dbwebb bin/dbwebb-validate
+
 
 
 script:
