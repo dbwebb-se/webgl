@@ -64,13 +64,13 @@ window.onload = function() {
 
     world.add = function (angle, speed, color) {
         color = new Float32Array(color);
-        
+
         this.objects.push({
             angle: angle,
             speed: speed,
             color: color
         });
-    }
+    };
 
     // Add the first object
     world.add(0, 10, [0.0, 1.0, 0.0, 1.0]);
@@ -81,14 +81,14 @@ window.onload = function() {
      * Update and respect timediff
      */
     var speed = 1;
-    
+
     function update(td) {
         var i;
         var object;
 
         for (i = 0; i < world.objects.length; i++) {
             object = world.objects[i];
-            object.angle = (object.angle + object.speed * speed) % 360; 
+            object.angle = (object.angle + object.speed * speed * td) % 360;
         }
     }
 
@@ -121,14 +121,14 @@ window.onload = function() {
     /**
      * A gameloop to animate
      */
-    var lastTick;
+    var lastTick = null;
     var request = null;
 
     function gameLoop() {
         var now = Date.now();
         var td = (now - (lastTick || now)) / 1000;
         lastTick = now;
-        
+
         request = window.requestAnimFrame(gameLoop);
 
         update(td);
@@ -152,6 +152,7 @@ window.onload = function() {
         if (request) {
             window.cancelRequestAnimFrame(request);
             request = null;
+            lastTick = null;
         }
     });
 
@@ -227,7 +228,7 @@ function setGeometrySquareHalf(gl) {
         ]),
        gl.STATIC_DRAW
    );
-   
+
   return data;
 }
 
@@ -251,6 +252,6 @@ function setGeometryTriangle(gl) {
         ]),
        gl.STATIC_DRAW
    );
-   
+
   return data;
 }
