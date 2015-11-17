@@ -5,7 +5,6 @@ window.onload = function() {
     "use strict";
 
     var html,
-        literal,
         element = document.getElementById('flash');
 
 
@@ -33,9 +32,9 @@ window.onload = function() {
 
         times = times || 1;
 
-        for(i = 0; i < times; i++) {
+        for (i = 0; i < times; i++) {
             val = random(1, 6);
-            sum += val; 
+            sum += val;
             res += val + ', ';
         }
 

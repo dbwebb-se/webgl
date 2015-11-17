@@ -17,6 +17,7 @@ main {
     background-color: #fff;
 }
 
+/*
 
 #canvas1:fullscreen {
 
@@ -25,7 +26,7 @@ main {
 #canvas1:fullscreen::backdrop {
     background-color: #006;
 }
-
+*/
 
 /**
  * Resize on fullscreen not consistent.

@@ -1,7 +1,6 @@
 {
 	"requireCurlyBraces": ["while", "do", "try", "catch"],
 	"requireSpaceAfterKeywords": ["if", "else", "for", "while", "do", "switch", "return", "try", "catch"],
-	"requireSpacesInsideObjectBrackets": "all",
 	"requireSpacesInForStatement": true,
 	"requireSpaceBeforeObjectValues":true,
 	"requireSpaceBetweenArguments": true,
@@ -19,6 +18,7 @@
 	"esnext": true,
 	"disallowTrailingWhitespace": true,
 
+	"requireSpacesInsideObjectBrackets": null,
 	"requireSpaceBeforeBinaryOperators": null,
 	"requireSpaceAfterBinaryOperators": null,
 	"validateIndentation": null,

@@ -8,7 +8,6 @@ window.onload = function() {
     var chooseColor = document.getElementById("chooseColor");
 
     var submitButton = document.getElementById("submitButton");
-    var clearButton = document.getElementById("clearButton");
 
     chooseColor.addEventListener("change", function() {
         myForm.style.backgroundColor = chooseColor.value;
@@ -20,10 +19,6 @@ window.onload = function() {
         document.getElementById("passwordResult").innerHTML = "Password: " + document.getElementById("password").value;
         document.getElementById("numberResult").innerHTML = "Chosen number: " + document.getElementById("number").value;
         document.getElementById("textareaResult").innerHTML = "Textmessage: " + document.getElementById("textarea").value;
-    });
-
-    clearButton.addEventListener("click", function() {
-        location.reload();
     });
 
     console.log("Everything is ready.");

@@ -6,8 +6,7 @@ window.onload = function() {
 
     var html,
         element = document.getElementById('flash'),
-        myBall = {},
-        ballElement;
+        myBall = {};
 
     html  = "<p>Click inside this area to move the ball.</p>";
     html += "<div id='ball' class='ball'></div>";
@@ -50,7 +49,7 @@ window.onload = function() {
     /**
      * Draw the ball.
      */
-    myBall.draw = function (x, y) {
+    myBall.draw = function () {
         console.log("draw");
         this.HTMLelement.style.left = this.position.x + "px";
         this.HTMLelement.style.top = this.position.y + "px";

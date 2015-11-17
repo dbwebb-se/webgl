@@ -14,7 +14,7 @@ window.onload = function() {
      */
     function draw() {
         var x0, y0, x1, y1, w, h;
-        
+
         // Sizes
         x0 = 1;
         y0 = 1;
@@ -22,7 +22,7 @@ window.onload = function() {
         y1 = ctx.canvas.height - 1;
         w = 100;
         h = 100;
-        
+
         // top left (almost)
         ctx.fillStyle = "hsla(0,100%,50%,1)";
         ctx.fillRect(x0, y0, w, h);
@@ -38,7 +38,7 @@ window.onload = function() {
         // bottom right (almost)
         ctx.fillStyle = "hsla(270,100%,50%,0.4)";
         ctx.fillRect(x1 - w, y1 - h, w, h);
-    } 
+    }
 
 
 
@@ -47,7 +47,7 @@ window.onload = function() {
      */
     function keypress(event) {
         console.log("Keypress " + event.keyCode);
-        
+
         switch (event.keyCode) {
             case 0:    //ContextMenu
             case 13:   //Enter
@@ -71,7 +71,7 @@ window.onload = function() {
             break;
             default:
                 return;
-            };
+            }
 
         return false;
     }
@@ -82,9 +82,9 @@ window.onload = function() {
 
 
 
-    // Start the application 
+    // Start the application
     Canvas.init(ctx);
     draw();
-    
-    console.log("Everything is ready.");  
+
+    console.log("Everything is ready.");
 }();

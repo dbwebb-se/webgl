@@ -4,10 +4,7 @@
  window.onload = function() {
       "use strict";
 
-      var html,
-          button = document.getElementById("button"),
-          gameArea,
-          gameBlocks;
+      var button = document.getElementById("button");
 
 
     button.addEventListener('click', function () {

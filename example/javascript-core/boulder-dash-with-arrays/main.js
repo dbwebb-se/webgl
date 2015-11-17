@@ -4,8 +4,7 @@
 window.onload = function() {
      "use strict";
 
-     var html,
-         area = document.getElementById("flash"),
+     var area = document.getElementById("flash"),
          gameArea,
          gameBlocks;
 
@@ -85,10 +84,10 @@ window.onload = function() {
         var i,
             element,
             block;
-    
+
         console.log("Drawing gamearea.");
-    
-        for(i = 0; i < gameArea.length; i++) {
+
+        for (i = 0; i < gameArea.length; i++) {
             element = document.createElement("div");
             element.innerHTML = "";
             block = (gameBlocks[i] ? " b" + gameBlocks[i] : "");
@@ -102,5 +101,5 @@ window.onload = function() {
 
     draw(gameArea, gameBlocks);
 
-    console.log("Everything is ready.");  
+    console.log("Everything is ready.");
 };

@@ -6,10 +6,9 @@
 
     var html,
         str,
-        value,
         pos,
         element = document.getElementById('flash');
-         
+
     console.log('Starting');
 
     // Make a html string to contain all examples in a ul/li list
@@ -29,11 +28,11 @@
 
     str = str + ".";
     html += "<li>" + str + " (" + str.length + ")";
-     
+
     pos = 15;
     str = str.substr(0, pos) + str.substring(pos + 4, str.length);
     html += "<li>" + str + " (" + str.length + ")";
-     
+
     html += "</ul>";
     element.innerHTML = html;
 

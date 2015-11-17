@@ -183,6 +183,7 @@ window.onload = function() {
 /**
  * A full square.
  */
+/*
 function setGeometrySquareFull(gl) {
     var data = {
         n: 6,
@@ -203,13 +204,14 @@ function setGeometrySquareFull(gl) {
    );
 
    return data;
-}
+} */
 
 
 
 /**
  * Half a square.
  */
+/*
 function setGeometrySquareHalf(gl) {
     var data = {
         n: 6,
@@ -230,7 +232,7 @@ function setGeometrySquareHalf(gl) {
    );
 
   return data;
-}
+} */
 
 
 

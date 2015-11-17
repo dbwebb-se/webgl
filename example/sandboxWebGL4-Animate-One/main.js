@@ -66,7 +66,7 @@ window.onload = function() {
     // Rotate
     var angle = 0;
 
-    function update(td) {
+    function update(/*td*/) {
 
         // Move around by angle
         angle = (angle + speed) % 360;
@@ -78,8 +78,8 @@ window.onload = function() {
 
         // Set the color
         var color = new Float32Array([
-            //Math.random(), Math.random(), Math.random(), 1.0 
-            0.0, 1.0, 0.0, 1.0 
+            //Math.random(), Math.random(), Math.random(), 1.0
+            0.0, 1.0, 0.0, 1.0
         ]);
         gl.uniform4fv(u_FragColor, color);
     }
@@ -106,7 +106,7 @@ window.onload = function() {
         var now = Date.now();
         var td = (now - (lastTick || now)) / 1000;
         lastTick = now;
-        
+
         request = window.requestAnimFrame(gameLoop);
 
         update(td);
@@ -151,6 +151,7 @@ window.onload = function() {
 /**
  * A full square.
  */
+/*
 function setGeometrySquareFull(gl) {
     var data = {
         n: 6,
@@ -171,13 +172,14 @@ function setGeometrySquareFull(gl) {
    );
 
    return data;
-}
+} */
 
 
 
 /**
  * Half a square.
  */
+/*
 function setGeometrySquareHalf(gl) {
     var data = {
         n: 6,
@@ -196,9 +198,9 @@ function setGeometrySquareHalf(gl) {
         ]),
        gl.STATIC_DRAW
    );
-   
+
   return data;
-}
+} */
 
 
 
@@ -220,6 +222,6 @@ function setGeometryTriangle(gl) {
         ]),
        gl.STATIC_DRAW
    );
-   
+
   return data;
 }

@@ -16,12 +16,12 @@ window.Canvas = (function(){
      */
     function init(aContext) {
         context = aContext;
-        
+
         originalWidth  = context.canvas.width;
         originalHeight = context.canvas.height;
 
         console.log("Init canvas size to " + originalWidth + "x" + originalHeight);
-    } 
+    }
 
 
 
@@ -31,11 +31,11 @@ window.Canvas = (function(){
     function resizeDefault() {
         context.canvas.width  = originalWidth;
         context.canvas.height = originalHeight;
-        
+
         context.canvas.style.position = "static";
 
         console.log("Resized default " + context.canvas.width + "x" + context.canvas.height);
-    } 
+    }
 
 
 
@@ -51,7 +51,7 @@ window.Canvas = (function(){
         context.canvas.style.top      = 0;
 
         console.log("Resized full browser " + context.canvas.width + "x" + context.canvas.height);
-    } 
+    }
 
 
 
@@ -59,11 +59,11 @@ window.Canvas = (function(){
      * Check if full screen is enabled.
      */
     function fullscreenEnabled() {
-        var enabled = document.fullscreenEnabled || 
-                      document.webkitFullscreenEnabled || 
+        var enabled = document.fullscreenEnabled ||
+                      document.webkitFullscreenEnabled ||
                       document.mozFullScreenEnabled ||
                       document.msFullscreenEnabled;
-        
+
         console.log("Fullscren is enabled: " + enabled);
         return enabled;
     }
@@ -76,7 +76,7 @@ window.Canvas = (function(){
     function requestFullscreen(elementId) {
         var el = document.getElementById(elementId),
             res = null;
-         
+
         if (el.requestFullscreen) {
             res = el.requestFullscreen();
         } else if (el.webkeltRequestFullscreen) {
@@ -86,7 +86,7 @@ window.Canvas = (function(){
         } else if (el.msRequestFullscreen) {
             res = el.msRequestFullscreen();
         }
-        
+
         console.log("Fullscreen requested: " + res);
         return res;
     }
@@ -140,9 +140,14 @@ window.Canvas = (function(){
 */
 
 
-    return  {
+    return {
         init:                   init,
         resizeDefault:          resizeDefault,
-        resizeFullBrowserSize:  resizeFullBrowserSize
+        resizeFullBrowserSize:  resizeFullBrowserSize,
+
+        fullscreenEnabled:      fullscreenEnabled,
+        requestFullscreen:      requestFullscreen,
+        fullscreenElement:      fullscreenElement,
+        exitFullscreen:         exitFullscreen,
     };
 })();

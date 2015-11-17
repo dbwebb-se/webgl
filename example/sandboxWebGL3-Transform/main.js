@@ -68,7 +68,7 @@ window.onload = function() {
         var radian = Math.PI * angle / 180.0;
         var cosB = Math.cos(radian);
         var sinB = Math.sin(radian);
-        
+
         // Translate
         var tx = Math.random()-0.5;
         var ty = Math.random()-0.5;
@@ -92,8 +92,8 @@ window.onload = function() {
 
         // Set the color
         var color = new Float32Array([
-            //0.0, 1.0, 0.0, 1.0 
-            Math.random(), Math.random(), Math.random(), 1.0 
+            //0.0, 1.0, 0.0, 1.0
+            Math.random(), Math.random(), Math.random(), 1.0
         ]);
         gl.uniform4fv(u_FragColor, color);
     }
@@ -117,6 +117,7 @@ window.onload = function() {
 /**
  * A full square.
  */
+/*
 function setGeometrySquareFull(gl) {
     var data = {
         n: 6,
@@ -137,13 +138,14 @@ function setGeometrySquareFull(gl) {
    );
 
    return data;
-}
+}*/
 
 
 
 /**
  * Half a square.
  */
+/*
 function setGeometrySquareHalf(gl) {
     var data = {
         n: 6,
@@ -162,9 +164,9 @@ function setGeometrySquareHalf(gl) {
         ]),
        gl.STATIC_DRAW
    );
-   
+
   return data;
-}
+}*/
 
 
 
@@ -186,6 +188,6 @@ function setGeometryTriangle(gl) {
         ]),
        gl.STATIC_DRAW
    );
-   
+
   return data;
 }

@@ -2,10 +2,6 @@ body {
     word-wrap: break-word;
 }
 
-article {
-    /*padding: 0 1em 1em 1em;*/
-}
-
 .right {
     float: right;
     padding: 0.5em;
@@ -15,7 +11,7 @@ article {
 
 
 /**
- * Style for collapsiale items in menu.
+ * Style for collapsible items in menu.
  */
 .ui-li-static.ui-collapsible > .ui-collapsible-heading {
     margin: 0;

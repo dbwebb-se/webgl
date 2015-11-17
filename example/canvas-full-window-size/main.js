@@ -20,7 +20,7 @@ window.onload = function() {
     function resize() {
         ct.canvas.width  = window.innerWidth;
         ct.canvas.height = window.innerHeight;
-    } 
+    }
 
 
 
@@ -29,7 +29,7 @@ window.onload = function() {
      */
     function draw() {
         var x0, y0, x1, y1, w, h;
-        
+
         // Sizes
         x0 = 1;
         y0 = 1;
@@ -37,7 +37,7 @@ window.onload = function() {
         y1 = ct.canvas.height - 1;
         w = 100;
         h = 100;
-        
+
         // top left (almost)
         ct.fillStyle = "hsla(0,100%,50%,1)";
         ct.fillRect(x0, y0, w, h);
@@ -53,21 +53,21 @@ window.onload = function() {
         // bottom right (almost)
         ct.fillStyle = "hsla(270,100%,50%,0.4)";
         ct.fillRect(x1 - w, y1 - h, w, h);
-    } 
+    }
 
 
 
     // Init the size of the canvas and draw som elements
     resize();
     draw();
-    
+
     // Add eventhandler to listen for resiz events on window
-    window.addEventListener("resize", function (event) {
+    window.addEventListener("resize", function () {
         resize();
         draw();
         console.log("Window was resized.");
     });
 
     // All done
-    console.log("Everything is ready.");  
+    console.log("Everything is ready.");
 }();

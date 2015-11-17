@@ -48,7 +48,7 @@ window.onload = function() {
     // Register eventhandler, mouse click
     canvas.onmousedown = function(ev) {
         click(ev, gl, canvas, a_Position, u_FragColor);
-    }
+    };
 
     gl.clear(gl.COLOR_BUFFER_BIT);
 

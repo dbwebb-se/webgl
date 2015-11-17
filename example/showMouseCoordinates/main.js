@@ -17,7 +17,7 @@ window.onload = function() {
     ct.strokeText("My Canvas Sandbox", 10, 50);
 
     function getMouseCoords(e){
-        var rect = e.target.getBoundingClientRect();
+        //var rect = e.target.getBoundingClientRect();
 
     	var result_x = document.getElementById('x_result');
     	var result_y = document.getElementById('y_result');
@@ -51,7 +51,7 @@ window.onload = function() {
     canvas.onmousemove = function(e) {
         getMouseCoordsOnCanvas(e);
         getConvertedCoords(e);
-    }
+    };
 
 
     console.log("Everything is ready.");

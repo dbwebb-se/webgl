@@ -61,7 +61,7 @@ window.onload = function() {
     var speed = 1;
     var ticks = 0;
 
-    function update(td) {
+    function update(/*td*/) {
         // Update but reflect the speed
         ticks = (ticks + 1) % speed;
         if (ticks) {
@@ -73,14 +73,14 @@ window.onload = function() {
 
         // Rotate
         var angle = Math.random() * 360;
-        modelMatrix.setRotate(angle, 0, 0, 1); 
-        
+        modelMatrix.setRotate(angle, 0, 0, 1);
+
         // Translate
         var tx = Math.random()-0.5;
         var ty = Math.random()-0.5;
         var tz = Math.random()-0.5;
         modelMatrix.translate(tx, ty, tz);
-        
+
         // Scale
         var sx = Math.random();
         var sy = Math.random();
@@ -93,7 +93,7 @@ window.onload = function() {
 
         // Set the color
         var color = new Float32Array([
-            Math.random(), Math.random(), Math.random(), 1.0 
+            Math.random(), Math.random(), Math.random(), 1.0
         ]);
         gl.uniform4fv(u_FragColor, color);
     }
@@ -120,7 +120,7 @@ window.onload = function() {
         var now = Date.now();
         var td = (now - (lastTick || now)) / 1000;
         lastTick = now;
-        
+
         request = window.requestAnimFrame(gameLoop);
 
         update(td);
@@ -160,6 +160,7 @@ window.onload = function() {
 /**
  * A full square.
  */
+/*
 function setGeometrySquareFull(gl) {
     var data = {
         n: 6,
@@ -180,13 +181,14 @@ function setGeometrySquareFull(gl) {
    );
 
    return data;
-}
+} */
 
 
 
 /**
  * Half a square.
  */
+/*
 function setGeometrySquareHalf(gl) {
     var data = {
         n: 6,
@@ -205,9 +207,9 @@ function setGeometrySquareHalf(gl) {
         ]),
        gl.STATIC_DRAW
    );
-   
+
   return data;
-}
+} */
 
 
 
@@ -229,6 +231,6 @@ function setGeometryTriangle(gl) {
         ]),
        gl.STATIC_DRAW
    );
-   
+
   return data;
 }
