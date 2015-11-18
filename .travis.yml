@@ -1,6 +1,10 @@
 language: node_js
 node_js:
     - "4.1"
+    #- "4.0"
+    #- "0.12"
+    #- "0.11"
+    #- "0.10"
 
 
 
@@ -14,17 +18,14 @@ before_install:
     # Install validation tools
     - npm install -g htmlhint csslint jshint jscs jsonlint js-yaml
 
-    # Make bin and download dbwebb-scripts
-    - mkdir bin
-    
-    - wget -O bin/dbwebb https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2
-    - wget -O bin/dbwebb-validate https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2-validate
-    
-    - chmod 755 bin/dbwebb bin/dbwebb-validate
+    # Download dbwebb-validate
+    - wget -O dbwebb-validate https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2-validate
+    - chmod 755 dbwebb-validate
+
 
 
 script:
-    - ./bin/dbwebb --version
-    - ./bin/dbwebb-validate --version
-    - ./bin/dbwebb-validate --check
-    - ./bin/dbwebb-validate example
+    # Run validation
+    - ./dbwebb-validate --version
+    - ./dbwebb-validate --check
+    - ./dbwebb-validate example
