@@ -1,6 +1,8 @@
 Game technologies for the web - webgl
 ===================
 
+[![Build Status](https://travis-ci.org/mosbth/webgl.svg?branch=master)](https://travis-ci.org/mosbth/webgl)
+
 Course material for webgl-course, aimed at a swedish target audience as an introduction to web programmering for computer science students at University level. 
 
 Relased as part of a University course presented at:
