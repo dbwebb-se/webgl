@@ -10,6 +10,11 @@ git:
 
 
 before_install:
+
+    # Install validation tools
+    - npm install -g htmlhint csslint jshint jscs jsonlint js-yaml
+
+    # Make bin and download dbwebb-scripts
     - mkdir bin
     
     - wget -O bin/dbwebb https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2
@@ -18,8 +23,8 @@ before_install:
     - chmod 755 bin/dbwebb bin/dbwebb-validate
 
 
-
 script:
     - ./bin/dbwebb --version
     - ./bin/dbwebb-validate --version
     - ./bin/dbwebb-validate --check
+    - ./bin/dbwebb-validate example
