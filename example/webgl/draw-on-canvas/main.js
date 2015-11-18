@@ -24,10 +24,10 @@ window.onload = function() {
             }
         };
 
-        canvas.onmouseup = function (e) {
+        canvas.onmouseup = function () {
             mousePressed = false;
         };
-	    canvas.mouseleave = function (e) {
+	    canvas.mouseleave = function () {
             mousePressed = false;
         };
     }

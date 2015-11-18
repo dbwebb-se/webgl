@@ -29,8 +29,8 @@ window.onload = function() {
             this.scene = new THREE.Scene();
             this.scene.fog = new THREE.FogExp2(0xcce0ff, 0.0003);
 
-            var SCREEN_WIDTH = window.innerWidth,
-                SCREEN_HEIGHT = window.innerHeight;
+            //var SCREEN_WIDTH = window.innerWidth,
+            //    SCREEN_HEIGHT = window.innerHeight;
 
             // Prepare camera
             var VIEW_ANGLE = 45, ASPECT = width / height, NEAR = 0.1, FAR = 2000;
@@ -92,7 +92,7 @@ window.onload = function() {
     		console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
     	},
     	// Function called when downloads error
-    	function ( xhr ) {
+    	function ( /* xhr */ ) {
     		console.log( 'An error happened' );
     	});
         }

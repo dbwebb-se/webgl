@@ -141,7 +141,7 @@ Particle.prototype = {
     },
 
     draw: function(ct) {
-        var i, particle;
+        var i;
         for(i=0; i<this.particles.length; i++) {
             this.particle[i].draw(ct);
         }
@@ -165,7 +165,7 @@ Forces.prototype = {
     },
 
     createDamping: function(damping) {
-        return function(velocity, td) {
+        return function(velocity /*, td */) {
             velocity.imuls(damping);
         }
     },
@@ -295,7 +295,7 @@ Player.prototype = {
  * Asteroids, the Game
  */
 window.Asteroids = (function(){
-    var canvas, ct, ship, lastGameTick, width, height;
+    var ct, ship, lastGameTick, width, height;
 
     var init = function(canvas) {
         canvas = document.getElementById(canvas);

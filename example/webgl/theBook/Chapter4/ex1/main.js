@@ -42,9 +42,9 @@ window.onload = function() {
         return;
     }
 
-    var radian = Math.PI * ANGLE / 180.0;
-    var cosB = Math.cos(radian);
-    var sinB = Math.sin(radian);
+    //var radian = Math.PI * ANGLE / 180.0;
+    //var cosB = Math.cos(radian);
+    //var sinB = Math.sin(radian);
 
     // Create Matrix4 object for a rotation matrix
     var xformMatrix = new Matrix4();

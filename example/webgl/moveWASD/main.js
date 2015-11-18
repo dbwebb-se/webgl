@@ -109,9 +109,10 @@ window.onload = function() {
 
 
     var mvMatrix = mat4.create();
-    var mvMatrixStack = [];
+    //var mvMatrixStack = [];
     var pMatrix = mat4.create();
 
+/*
     function mvPushMatrix() {
         var copy = mat4.create();
         mat4.set(mvMatrix, copy);
@@ -124,7 +125,7 @@ window.onload = function() {
         }
         mvMatrix = mvMatrixStack.pop();
     }
-
+*/
 
     function setMatrixUniforms() {
         gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, pMatrix);

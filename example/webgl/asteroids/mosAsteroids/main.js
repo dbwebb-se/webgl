@@ -93,7 +93,7 @@ Vector.prototype = {
     imuls: function (scalar) { this.x *= scalar; this.y *= scalar; return this; },      // Multiply itself with scalar
     adds:  function (scalar) { return new Vector( this.x + scalar, this.y + scalar); }, // Add with scalar
     iadd:  function (vector) { this.x += vector.x; this.y += vector.y; return this; }   // Add itself with Vector
-}
+};
 
 
 
@@ -111,7 +111,7 @@ Particle.prototype = {
     update: function(td) { this.position.iadd( this.velocity.muls( td ) ); },
 
     draw: function(ct) { ct.fillRect(this.position.x, this.position.y, 1, 1); }
-}
+};
 
 
 
@@ -131,7 +131,7 @@ Particle.prototype = {
             particle = this.particles[i];
             for(j=o; j<this.forces.length; j++) {
                 force = this.forces[i];
-                force(particle, td)
+                force(particle, td);
             }
             if(particle.update(td)) {
                 alive.push(particle);
@@ -141,12 +141,12 @@ Particle.prototype = {
     },
 
     draw: function(ct) {
-        var i, particle;
+        var i;
         for(i=0; i<this.particles.length; i++) {
             this.particle[i].draw(ct);
         }
     }
-}
+};
 
 
 /**
@@ -161,19 +161,19 @@ Forces.prototype = {
     createAcceleration: function(vector) {
         return function(velocity, td) {
             velocity.iadd(vector.muls(td));
-        }
+        };
     },
 
     createDamping: function(damping) {
-        return function(velocity, td) {
+        return function(velocity /*, td*/) {
             velocity.imuls(damping);
-        }
+        };
     },
 
     createWind: function(vector) {
         return function(velocity, td) {
             velocity.iadd(vector.adds(td));
-        }
+        };
     },
 
     addAcceleration:  function(name, vector)  { this.all[name] = this.createAcceleration(vector); },
@@ -188,7 +188,7 @@ Forces.prototype = {
         }
     }
 
-}
+};
 
 window.Forces = new Forces();
 window.Forces.addAcceleration('gravity', new Vector(0, 9.82));
@@ -219,7 +219,7 @@ Player.prototype = {
 
     ct.save();
     ct.translate(this.position.x, this.position.y);
-    ct.rotate(this.direction+Math.PI/2)
+    ct.rotate(this.direction+Math.PI/2);
     ct.beginPath();
     ct.moveTo(0, -y);
     ct.lineTo(x, y);
@@ -287,7 +287,7 @@ Player.prototype = {
     if(this.position.x > width)         this.position.x = -this.width;
     if(this.position.x < -this.width)   this.position.x = width;
   }
-}
+};
 
 
 
@@ -295,15 +295,15 @@ Player.prototype = {
  * Asteroids, the Game
  */
 window.Asteroids = (function(){
-    var canvas, ct, ship, lastGameTick, width, height;
+    var ct, ship, lastGameTick, width, height;
 
     var init = function(canvas) {
         canvas = document.getElementById(canvas);
         ct = canvas.getContext('2d');
-        width = canvas.width,
-        height = canvas.height,
+        width = canvas.width;
+        height = canvas.height;
         ct.lineWidth = 1;
-        ct.strokeStyle = 'hsla(0,0%,100%,1)',
+        ct.strokeStyle = 'hsla(0,0%,100%,1)';
         ship = new Player(10, 20, new Vector(width/2, height/2));
 
         console.log('Init the game');
@@ -330,7 +330,7 @@ window.Asteroids = (function(){
     return {
         'init': init,
         'gameLoop': gameLoop
-    }
+    };
 })();
 
 window.onload = function() {

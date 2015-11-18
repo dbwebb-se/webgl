@@ -37,7 +37,7 @@ window.onload = function() {
     }
 
     // The translation distance for x, y and z direction
-    var Tx = 0.5, Ty = 0.5, Tz = 0.0;
+    //var Tx = 0.5, Ty = 0.5, Tz = 0.0;
 
     var ANGLE = 90.0;
 

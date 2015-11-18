@@ -82,7 +82,7 @@ window.onload = function() {
     		console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
     	},
     	// Function called when downloads error
-    	function ( xhr ) {
+    	function ( /* xhr */ ) {
     		console.log( 'An error happened' );
     	});
         }
