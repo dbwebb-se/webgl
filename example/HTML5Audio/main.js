@@ -17,4 +17,6 @@ window.onload = function() {
             button.innerHTML = "Spela";
         }
     });
-}
+
+    console.log("Sandbox ready!");
+};
