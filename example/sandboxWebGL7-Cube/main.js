@@ -399,7 +399,7 @@ function main() {
 
 
 
-    // Create vaious objects for the world
+    // Create various objects for the world
     var mvp = new MVP();
     var cp   = new ControlPanel(mvp);
     var key  = new KeyPress(mvp, 0.05);

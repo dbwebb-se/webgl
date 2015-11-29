@@ -69,61 +69,402 @@
 
 
 
+<!-- slide -->
 <script data-role="slide" data-markdown type="text/html">
 #Objekt och konstruktor
 
+<pre data-code="c1"></pre>
+
+</script>
+
+<script id="c1" data-role="code" data-language="javascript" type="text/html">
+function ControlPanel (mvp) {
+    this.mvp = mvp;
+
+    this.elEyeX = document.getElementById("eyeX");
+    this.elEyeY = document.getElementById("eyeY");
+    this.elEyeZ = document.getElementById("eyeZ");
+}
+
+var cp = new ControlPanel(mvp);
 </script>
 
 
 
+<!-- slide -->
 <script data-role="slide" data-markdown type="text/html">
 #Objekt och prototyp
 
+<pre data-code="c2"></pre>
+
+</script>
+
+<script id="c2" data-role="code" data-language="javascript" type="text/html">
+/**
+ * Update the control panel to reflect current settings.
+ */
+ControlPanel.prototype.updateFromMVP = function () {
+    this.elEyeX.value = this.mvp.eyeX;
+    this.elEyeY.value = this.mvp.eyeY;
+    this.elEyeZ.value = this.mvp.eyeZ;
+};
+
+cp.updateFromMVP();
 </script>
 
 
 
+<!-- slide -->
 <script data-role="slide" data-markdown type="text/html">
 #Prototyp och länkning
 
+* "Klassiskt arv"?
+* Objekt länkas via __proto__
+* Se exempel i devtools
+
 </script>
 
 
 
+<!-- slide -->
 <script data-role="slide" data-markdown type="text/html">
 #JSHint och objekt
 
+* Om objekt defineras i annan fil.
+
+```
+/* globals ControlPanel, KeyPress, MVP */
+```
+
 </script>
 
 
 
+<!-- slide -->
 <script data-role="slide" data-markdown type="text/html">
 #Event och this
 
+<pre data-code="c3"></pre>
+
+</script>
+
+<script id="c3" data-role="code" data-language="javascript" type="text/html">
+function KeyPress(mvp, step) {
+    this.mvp = mvp;
+    this.step = step || 0.05;
+}
+
+KeyPress.prototype.handler = function (event) {
+    switch (event.keyCode) {
+        case 39:   //ArrowRight
+            this.mvp.eyeX += this.step;
+        break;
+// ...
+        default:
+            return false;
+    }
+    return true;
+};
 </script>
 
 
 
+<!-- slide -->
 <script data-role="slide" data-markdown type="text/html">
-#Userinput och animate
+#Event och this...
+
+<pre data-code="c4"></pre>
+
+</script>
+
+<script id="c4" data-role="code" data-language="javascript" type="text/html">
+// Create various objects for the world
+var mvp = new MVP();
+var cp   = new ControlPanel(mvp);
+var key  = new KeyPress(mvp, 0.05);
+
+mvp.setView(3, 3, 7, 0, 0, 0, 0, 1, 0);
+mvp.setPerspective(30, 1, 1, 100);
+
+cp.updateFromMVP();
+</script>
+
+
+
+<!-- slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Event och this...
+
+<pre data-code="c5"></pre>
+
+</script>
+
+<script id="c5" data-role="code" data-language="javascript" type="text/html">
+window.addEventListener("keydown", function (event) {
+    if (key.handler(event)) {
+        cp.updateFromMVP();
+        update();
+        render();
+    }
+});
+
+document.getElementById("update").addEventListener("click", function() {
+    cp.updateMVP();
+    update();
+    render();
+});
+</script>
+
+
+
+
+<!-- slide -->
+<script data-role="slide" data-markdown type="text/html">
+#[Userinput och animate](http://dbwebb.se/javascript/lekplats/canvas-animation-spaceship-with-forces/)
+
+<iframe style="background-color: #fff;" src="http://dbwebb.se/javascript/lekplats/canvas-animation-spaceship-with-forces/" width="1024" height="768" frameborder="0"></iframe>
 
 </script>
 
 
 
+<!-- slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Events och animering
+
+<pre data-code="c6"></pre>
+
+</script>
+
+<script id="c6" data-role="code" data-language="javascript" type="text/html">
+window.Key = {
+  pressed: {},
+
+  LEFT:   37,
+  UP:     38,
+  RIGHT:  39,
+  DOWN:   40,
+  SPACE:  32,
+  A:      65,
+  S:      83,
+  D:      68,
+  w:      87,
+  
+</script>
+
+
+
+<!-- slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Events och animering...
+
+<pre data-code="c7"></pre>
+
+</script>
+
+<script id="c7" data-role="code" data-language="javascript" type="text/html">
+    isDown: function(keyCode, keyCode1) {
+      return this.pressed[keyCode] || this.pressed[keyCode1];
+    },
+
+    onKeydown: function(event) {
+      this.pressed[event.keyCode] = true;
+    },
+
+    onKeyup: function(event) {
+      delete this.pressed[event.keyCode];
+    }
+};
+</script>
+
+
+
+<!-- slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Events och animering...
+
+<pre data-code="c8"></pre>
+
+</script>
+
+<script id="c8" data-role="code" data-language="javascript" type="text/html">
+window.addEventListener('keyup', function(event) {
+    Key.onKeyup(event);
+});
+
+window.addEventListener('keydown', function(event) {
+    Key.onKeydown(event);
+});
+</script>
+
+
+
+<!-- slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Events och animering...
+
+<pre data-code="c9"></pre>
+
+</script>
+
+<script id="c9" data-role="code" data-language="javascript" type="text/html">
+update: function(td, width, height) {
+    if (Key.isDown(Key.UP, Key.W))     this.throttle(td);
+    if (Key.isDown(Key.LEFT, Key.A))   this.rotateLeft();
+    if (Key.isDown(Key.DOWN, Key.S))   this.breaks(td);
+    if (Key.isDown(Key.RIGHT, Key.D))  this.rotateRight();
+    Forces.update(this.velocity, td);
+    this.moveForward(td);
+    this.stayInArea(width, height);
+},
+</script>
+
+
+
+<!-- slide -->
 <script data-role="slide" data-markdown type="text/html">
 #Ladda bilder som texturer
 
+<pre data-code="c10"></pre>
+
+</script>
+
+<script id="c10" data-role="code" data-language="javascript" type="text/html">
+//
+// Create texture and load the image
+//
+var texture0 = gl.createTexture();
+var texture1 = gl.createTexture();
+
+// Flip the image's y axis
+gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1);
+
+// Set the texture units to the sampler
+gl.uniform1i(u_Sampler0, 0);
+gl.uniform1i(u_Sampler1, 1);
+
 </script>
 
 
 
+<!-- slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Ladda texturer..
+
+<pre data-code="c11"></pre>
+
+</script>
+
+<script id="c11" data-role="code" data-language="javascript" type="text/html">
+// Create a image object to load and hold the image
+var totalImages = 2;
+var image0 = new Image();
+var image1 = new Image();
+
+image0.onload = function() { mapImage2Texture(image0, gl.TEXTURE0, texture0); };
+image1.onload = function() { mapImage2Texture(image1, gl.TEXTURE1, texture1); };
+
+image0.src = data.texture0;
+image1.src = data.texture1;
+</script>
+
+
+
+<!-- slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Ladda texturer..
+
+<pre data-code="c12"></pre>
+
+</script>
+
+<script id="c12" data-role="code" data-language="javascript" type="text/html">
+/**
+ * Map image to texture and update & draw when all images are loaded.
+ */
+var loadedImages = 0;
+
+function mapImage2Texture(image, texture, textureVar) {
+
+    // Map image to choosen texture
+    gl.activeTexture(texture);
+    gl.bindTexture(gl.TEXTURE_2D, textureVar);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, image);
+
+    loadedImages++;
+
+    console.log("Loaded image: " + loadedImages);
+    console.log(image);
+
+    if (loadedImages === totalImages) {
+        console.log("update & draw");
+        update();
+        draw();
+    }
+}
+</script>
+
+
+
+<!-- slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Samla *meshen*
+
+<pre data-code="c13"></pre>
+
+</script>
+
+<script id="c13" data-role="code" data-language="javascript" type="text/html">
+function setGeometryRectangleTexture(gl) {
+    var data = {
+        usage:      gl.STATIC_DRAW,
+        mode:       gl.TRIANGLE_STRIP,
+        fsize:      null,
+        //texture0:  "../img/sky.jpg".
+        texture0:   "../img/mos_256x256.jpg",
+        texture1:   "../img/circle.gif",
+        n:          4,
+        vertex:     new Float32Array([
+            -0.5,  0.5,   0.0, 1.0,
+            -0.5, -0.5,   0.0, 0.0,
+             0.5,  0.5,   1.0, 1.0,
+             0.5, -0.5,   1.0, 0.0,
+        ]),
+    };
+
+    data.fsize = data.vertex.BYTES_PER_ELEMENT;
+
+    return data;
+}
+</script>
+
+
+
+<!-- slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Sandbox
+##Kika igenom exempelprogram
+
+* [sandboxWebGL5-Texture-blend](http://dbwebb.se/webgl/repo/example/sandboxWebGL5-Texture-blend/)
+* [sandboxWebGL7-MVP Ortho](http://dbwebb.se/webgl/repo/example/sandboxWebGL7-MVP/)
+* [sandboxWebGL7-MVP-perspective](http://dbwebb.se/webgl/repo/example/sandboxWebGL7-MVP-perspective/)
+* [sandboxWebGL7-Cube](http://dbwebb.se/webgl/repo/example/sandboxWebGL7-Cube/)
+* [sandboxWebGL7-Z-fighting](http://dbwebb.se/webgl/repo/example/sandboxWebGL7-Z-fighting/)
+
+</script>
+
+
+
+
+<!-- slide -->
 <script data-role="slide" data-markdown type="text/html">
 #Frågor på det?
 </script>
 
 
 
+<!-- slide -->
 <script data-role="slide" data-markdown type="text/html">
 </script>
 
