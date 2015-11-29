@@ -2,7 +2,6 @@ Game technologies for the web - webgl
 ===================
 
 [![Join the chat at https://gitter.im/mosbth/webgl](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mosbth/webgl?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 [![Build Status](https://travis-ci.org/mosbth/webgl.svg?branch=master)](https://travis-ci.org/mosbth/webgl)
 
 Course material for webgl-course, aimed at a swedish target audience as an introduction to web programmering for computer science students at University level. 
