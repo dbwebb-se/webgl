@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Sandbox for WebGL v5</title>
+</head>
+<body>
+<main>
+    <h1>Colored triangle (varying variable, reload)</h1>
+    <canvas id="canvas" class="canvas" width="800" height="500"></canvas>
+</main>
+
+<footer>
+    <p>Validators: 
+        <a href="http://validator.w3.org/check/referer">HTML5</a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a>
+        <a href="http://validator.w3.org/unicorn/check?ucn_uri=referer&amp;ucn_task=conformance">Unicorn</a>
+        <a href="http://jshint.com/">JSHint</a>
+    </p>
+</footer>
+
+
+
+<!-- vertex shader -->
+<script id="vertex-shader" type="x-shader/x-vertex">
+
+attribute vec4 a_Position;
+uniform mat4 u_ModelMatrix;
+attribute vec4 a_Color;
+varying vec4 v_Color;
+
+void main() {
+    gl_Position = u_ModelMatrix * a_Position;
+    v_Color = a_Color;
+}
+
+</script>
+
+
+
+<!-- fragment shader -->
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+
+varying vec4 v_Color;
+
+void main() {
+    gl_FragColor = v_Color;
+}
+
+</script>
+
+
+
+<!-- include javascript -->
+<script type="text/javascript" src="../lib/webgl-utils.js"></script>
+<script type="text/javascript" src="../lib/cuon-matrix.js"></script>
+<script type="text/javascript" src="main.js"></script>
+
+</body>
+</html>
