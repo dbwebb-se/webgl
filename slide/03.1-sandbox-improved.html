@@ -116,6 +116,59 @@ cp.updateFromMVP();
 
 <!-- slide -->
 <script data-role="slide" data-markdown type="text/html">
+#Objekt och prototyp...
+
+<pre data-code="c21"></pre>
+
+</script>
+
+<script id="c21" data-role="code" data-language="javascript" type="text/html">
+/**
+ * Update from the control panel to reflect current settings.
+ */
+ControlPanel.prototype.updateMVP = function () {
+    this.mvp.eyeX = parseFloat(this.elEyeX.value);
+    this.mvp.eyeY = parseFloat(this.elEyeY.value);
+    this.mvp.eyeZ = parseFloat(this.elEyeZ.value);
+};
+
+document.getElementById("update").addEventListener("click", function() {
+    cp.updateMVP();
+    update();
+    render();
+});
+</script>
+
+
+
+<!-- slide -->
+<script data-role="slide" data-markdown type="text/html">
+#HTML i kontrollpanel
+
+<pre data-code="c22"></pre>
+
+</script>
+
+<script id="c22" data-role="code" data-language="javascript" type="text/html">
+<table>
+    <tr>
+        <th></th><th>x</th><th>y</th><th>z</th>
+    </tr>
+    <tr>
+        <td>Eye point</td>
+        <td><input id="eyeX" name="eyeX" type="number" value="0" /></td>
+        <td><input id="eyeY" name="eyeY" type="number" value="0" /></td>
+        <td><input id="eyeZ" name="eyeZ" type="number" value="0" /></td>
+    </tr>
+...
+<input id="update" type="button" value="Update" />
+
+</script>
+
+
+
+<!-- slide -->
+<script data-role="slide" data-markdown type="text/html">
 #Prototyp och länkning
 
 * "Klassiskt arv"?
@@ -135,6 +188,8 @@ cp.updateFromMVP();
 ```
 /* globals ControlPanel, KeyPress, MVP */
 ```
+
+* [Nuvarande jshintrc-fil](https://github.com/mosbth/webgl/blob/master/.jshintrc)
 
 </script>
 
@@ -454,6 +509,26 @@ function setGeometryRectangleTexture(gl) {
 
 </script>
 
+
+
+
+<!-- slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Om kursens omfattning
+</script>
+
+
+
+<!-- slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Om projektet
+
+* Visa du kan WebGL
+* Visa du kan JavaScript
+* Visa du har kunskaper i HTML/CSS
+* Metaball, cloak, partikel, annat?
+* CPU kontra GPU-lösning.
+</script>
 
 
 
