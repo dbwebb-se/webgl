@@ -2,7 +2,10 @@ Game technologies for the web - webgl
 ===================
 
 [![Join the chat at https://gitter.im/mosbth/webgl](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mosbth/webgl?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/mosbth/webgl.svg?branch=master)](https://travis-ci.org/mosbth/webgl)
+[![Build Status](https://travis-ci.org/dbwebb-se/webgl.svg?branch=master)](https://travis-ci.org/dbwebb-se/webgl)
+[![CircleCI](https://circleci.com/gh/dbwebb-se/webgl.svg?style=svg)](https://circleci.com/gh/dbwebb-se/webgl) |
+
+
 
 Course material for webgl-course, aimed at a swedish target audience as an introduction to web programmering for computer science students at University level. 
 
@@ -21,7 +24,7 @@ This is a co-effort of several people using freely available documentation and t
 
 For contributors, see the commit history and the issues.
 
-Feel free to help builing up the repository with more content suited for training and education.
+Feel free to help building up the repository with more content suited for training and education.
 
 
 
