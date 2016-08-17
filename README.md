@@ -28,6 +28,11 @@ Feel free to help builing up the repository with more content suited for trainin
 History
 -------------------
 
+v1.1.0 (2016-08-17)
+
+* Enabled local development environment and test suite on travis and circle.
+
+
 v1.0.0 (2016-08-17)
 
 * Started work in May 2015, planned release end of October 2015.
