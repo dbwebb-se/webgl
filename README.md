@@ -28,7 +28,7 @@ Feel free to help builing up the repository with more content suited for trainin
 History
 -------------------
 
-v1.0.x (latest)
+v1.0.0 (2016-08-17)
 
 * Started work in May 2015, planned release end of October 2015.
 
@@ -36,5 +36,5 @@ v1.0.x (latest)
 
 ```                                                            
  .                                                             
-..:  Copyright (c) 2015 Mikael Roos, mos@dbwebb.se   
+..:  Copyright (c) 2015 - 2016 Mikael Roos, mos@dbwebb.se   
 ```                                                            
