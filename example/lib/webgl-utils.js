@@ -414,7 +414,7 @@ var WebGLUtils = (function() {
      * Provides cancelRequestAnimationFrame in a cross browser way.
      */
     window.cancelRequestAnimFrame = (function() {
-      return window.cancelRequestAnimationFrame ||
+      return window.cancelAnimationFrame ||
              window.webkitCancelRequestAnimationFrame ||
              window.mozCancelRequestAnimationFrame ||
              window.oCancelRequestAnimationFrame ||
