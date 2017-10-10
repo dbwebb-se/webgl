@@ -1,0 +1,128 @@
+#
+# Inspect, tools to inspect a kmom.
+#
+# Usage: dbwebb inspect kmom01
+#
+# Sequence executed:
+# webgl(), webglkmom01(), webgllast()
+#
+
+
+#
+# Test webgl general
+#
+webgl()
+{
+    inspectIntro
+}
+
+
+
+#
+# Test general, last in sequence
+#
+function webgllast()
+{
+    inspectMe "me/redovisa" "me.html" "redovisning.html"
+}
+
+
+
+#
+# Test webgl kmom01
+#
+webglkmom01()
+{
+    webglexercise "lab1" "answer.html" "uppgift/javascript-med-variabler-loopar-och-inbyggda-funktioner"
+    webglexercise "sandbox" "index.html" "uppgift/skapa-din-egen-sandbox-for-javascript-testprogram"
+}
+
+
+
+#
+# Test webgl kmom02
+#
+webglkmom02()
+{
+    webglexercise "lab2" "answer.html" "uppgift/javascript-med-funktioner"
+    webglexercise "flag1" "index.html" "uppgift/gor-svenska-flaggan-i-html-och-css"
+    webglexercise "baddie1" "index.html" "uppgift/flytta-runt-en-baddie-pa-webbsidan"
+}
+
+
+
+#
+# Test webgl kmom03
+#
+webglkmom03()
+{
+    webglexercise "lab3" "answer.html" "uppgift/javascript-och-arrayer"
+    webglexercise "flag2" "index.html" "uppgift/gor-svenska-flaggan-med-javascript-html-och-css"
+    webglexercise "baddie2" "index.html" "uppgift/flytta-baddie-pa-webbsida-2"
+}
+
+
+
+#
+# Test webgl kmom04
+#
+webglkmom04()
+{
+    webglexercise "lab4" "answer.html" "uppgift/javascript-och-arrayer"
+    webglexercise "lab5" "answer.html" "uppgift/javascript-och-objekt"
+    webglexercise "flag3" "index.html" "uppgift/gor-svenska-flaggan-med-javascript-och-objekt"
+    webglexercise "baddie3" "index.html" "uppgift/flytta-baddie-pa-webbsida-3"
+}
+
+
+
+#
+# Test webgl kmom
+#
+webglkmom05()
+{
+    webglexercise "dom" "index.html" "uppgift/javascript-dom-och-events"
+    webglexercise "flag4" "index.html" "uppgift/memory-rita-flaggor-med-javascript-och-dom"
+}
+
+
+
+#
+# Test webgl kmom
+#
+webglkmom06()
+{
+    webglexercise "hangman" "index.html" "uppgift/hanga-gubben-som-modul-i-javascript"
+}
+
+
+
+#
+# Test webgl kmom
+#
+webglkmom10()
+{
+    webglexercise "intelligence" "index.html" "webgl/kmom10"
+}
+
+
+
+#---------------------- BELOW SHOULD BE REPLACED ----------------------------
+
+#
+# Test webgl sandbox
+# REPLACE with inspectLab
+#
+webglexercise()
+{
+    local lab="$1"
+    local main="$2"
+    local url="$3"
+    local target="me/$KMOM/$lab"
+
+    headerForTest "-- $lab" "-- ${DBW_WWW}$url"
+    openFilesInEditor "$target"
+    checkKmomDir "$target"
+    fileIsReadable "$target/$main"
+    printUrl "$main" "$target"  
+}
