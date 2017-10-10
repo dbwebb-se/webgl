@@ -11,9 +11,9 @@ Course material for webgl-course, aimed at a swedish target audience as an intro
 
 Relased as part of a University course presented at:
 
-* http://dbwebb.se/webgl
+* https://dbwebb.se/webgl
 
-The usage of this repo is related to the dbwebb command, which has [some documentation](http://dbwebb.se/dbwebb-cli) and exists as a [separate repo](https://github.com/mosbth/dbwebb-cli).
+The usage of this repo is related to the dbwebb command, which has [some documentation](https://dbwebb.se/dbwebb-cli) and exists as a [separate repo](https://github.com/mosbth/dbwebb-cli).
 
 
 
@@ -28,21 +28,7 @@ Feel free to help building up the repository with more content suited for traini
 
 
 
-History
--------------------
-
-v1.1.0 (2016-08-17)
-
-* Enabled local development environment and test suite on travis and circle.
-
-
-v1.0.0 (2016-08-17)
-
-* Started work in May 2015, planned release end of October 2015.
-
-
-
 ```                                                            
  .                                                             
-..:  Copyright (c) 2015 - 2016 Mikael Roos, mos@dbwebb.se   
+..:  Copyright (c) 2015 - 2017 Mikael Roos et al, mos@dbwebb.se   
 ```                                                            
