@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>Me-site i webgl</title>
+
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+
+
+<!--Shared header for all pages-->
+<div id="header" data-role="header" data-theme="b">
+    <a href="#menu" class="ui-btn ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-left ui-btn-b ui-btn-icon-notext ui-shadow-icon">Menu</a>
+    <h1>Me-site i webgl</h1>
+</div>
+
+
+
+<!--Shared menu for all pages-->
+<div data-role="panel" id="menu" data-theme="b" data-display="overlay">
+    <ul data-role="listview">
+        <li><a href="#me">Me</a></li>
+        <li data-role="collapsible" data-iconpos="right" data-inset="false">
+            <h3>Redovisning</h3>
+            <ul data-role="listview" data-theme="a">
+                <li><a href="#report1">Kmom01</a></li>
+                <li><a href="#report2">Kmom02</a></li>
+                <li><a href="#report3">Kmom03</a></li>
+                <li><a href="#report5">Kmom05</a></li>
+            </ul>
+        </li>
+        <li data-role="collapsible" data-iconpos="right" data-inset="false">
+            <h3>Demo</h3>
+            <ul data-role="listview" data-theme="a">
+                <li><a href="#sandbox">Sandbox</a></li>
+                <li><a href="#test2">Test #2</a></li>
+            </ul>
+        </li>
+        <li><a href="#about">Om</a></li>
+    </ul>
+</div>
+
+
+
+<!--Shared footer for all pages-->
+<div id="footer" data-role="footer" data-theme="b">
+    <h1>Copyright 2015 by Mikael Roos</h1>
+</div>
+
+
+
+<div id="me" data-role="page">
+	<div role="main" class="ui-content">
+        <article>
+            <h1>Om Mig</h1>
+
+            <p>Hej, jag heter Mikael Roos och är lärare på denna kurs som jag valt att kalla för smeknamnet <i>webgl</i>.</p>
+
+            <img src="http://www.gravatar.com/avatar/d1e65e60a2a3b9ef7c94a86374dde46c.jpg?s=200" class="right" alt="Bild på mig">
+
+            <p>Detta är min me-sida i kursen. Denna sidan innehåller en presentation av mig själv. Underhåll denna sidan under hela kursen och uppdatera den efter hand och behov.</p>
+
+            <p>Så, en presentation en bra början. Skriv några ord om dig själv. Jag börjar.</p>
+
+            <p>Mitt namn är Mikael Roos. Född och uppvuxen i Bankeryd, Småland, strax utanför Jönköping, i ett villaområde som byggdes upp samtidigt som vi flyttade in där. En längre historia om mig finns att läsa i min me-sida för kursen oophp. Du når den via länken: <a class="more" href="http://dbwebb.se/oophp/me/kmom01/me.php">http://dbwebb.se/oophp/me/kmom01/me.php</a>.</p>
+
+            <p>Om jag skall nämna någon hobby, förutom webbprogrammering, så får det bli att bära sten på sommarstugetomten, och det finns sten så det räcker ett par livstider. Till och från får jag för mig att börja på lite hobbies, ett år satsade jag på pokerspel, ett annat år var det geocaching och därefter turfing.</p>
+
+            <p>Nu är jag öppen för nya hobbies, vi får se vad det blir.</p>
+
+            <p>Vi syns och hörs i forum och chatt!</p>
+        </article>
+	</div>
+</div>
+
+
+
+<div id="report1" data-role="page">
+	<div role="main" class="ui-content">
+        <article>
+            <h1>Redovisning Kmom01</h1>
+            <p>Här kommer redovisningstexten.</p>
+        </article>
+	</div>
+</div>
+
+
+
+<div id="report2" data-role="page">
+	<div role="main" class="ui-content">
+        <article>
+            <h1>Redovisning Kmom02</h1>
+            <p>Här kommer redovisningstexten.</p>
+        </article>
+	</div>
+</div>
+
+
+
+<div id="report3" data-role="page">
+	<div role="main" class="ui-content">
+        <article>
+            <h1>Redovisning Kmom03</h1>
+            <p>Här kommer redovisningstexten.</p>
+        </article>
+	</div>
+</div>
+
+
+
+<div id="report5" data-role="page">
+	<div role="main" class="ui-content">
+        <article>
+            <h1>Redovisning Kmom05</h1>
+            <p>Här kommer redovisningstexten.</p>
+        </article>
+	</div>
+</div>
+
+
+
+<div id="about" data-role="page">
+    <div role="main" class="ui-content">
+        <article>
+            <h1>Om</h1>
+            <p>Detta är min me-sida i kursen webgl.</p>
+        </article>
+	</div>
+</div>
+
+
+
+<div id="sandbox" data-role="page">
+	<div role="main" class="ui-content">
+        <article>
+            <h1>Min personliga sandbox</h1>
+            <p>Här är <a href="../sandbox" target="_blank">länken till min personliga sandbox</a>.</p>
+        </article>
+	</div>
+</div>
+
+
+
+<div id="test2" data-role="page">
+	<div role="main" class="ui-content">
+        <article>
+            <h1>Test 2</h1>
+            <p>Här kan du fylla på men en länk till ditt testprogram.</p>
+            <p>För att skapa en ny undersida så lägger du till en rad i menyn och du skapar en ny sida som du ger ett unikt id till vilket du länkar från menyn. Kika i källkoden.</p>
+        </article>
+	</div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
