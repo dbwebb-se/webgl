@@ -2,6 +2,13 @@ Revision History
 ===================
 
 
+v2.0.0* (2017-10-10)
+-------------------
+
+* After upgrading course repo to dbwebb-cli version 2.
+* Added eslint, customized it and passed validation for example/.
+
+
 v1.2.0 (2017-10-10)
 -------------------
 

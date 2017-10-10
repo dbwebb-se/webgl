@@ -1,7 +1,7 @@
 /**
  * Draw on Canvas
  */
-/* globals Triangle */
+/* globals WebGLUtils, Triangle, Matrix4 */
 window.onload = function() {
     "use strict";
 
@@ -78,13 +78,15 @@ window.onload = function() {
         }
     }
 
+
+
     /**
     * FPS vars
     */
-	var fpsEle = document.getElementById("fps");
-	var fps = 0;
-	var fpsCounter = 0;
-	var fpsTimer = Date.now();
+    var fpsEle = document.getElementById("fps");
+    var fps = 0;
+    var fpsCounter = 0;
+    var fpsTimer = Date.now();
 
     /**
      * Draw it
@@ -94,8 +96,7 @@ window.onload = function() {
 
         gl.clear(gl.COLOR_BUFFER_BIT);
 
-        for (var i = 0; i < world.objects.length; i++)
-        {
+        for (var i = 0; i < world.objects.length; i++) {
             var object = world.objects[i];
 
             modelMatrix.setRotate(object.angle, 0, 0, 1);
@@ -106,16 +107,17 @@ window.onload = function() {
             var data = setGeometryTriangle(gl, new Float32Array(object.vertices), gl.TRIANGLES);
             gl.drawArrays(data.mode, 0, data.n);
 
-            if (object.selected)
-            {
+            if (object.selected) {
                 gl.uniform4fv(u_FragColor, new Float32Array([1, 0, 0, 1]));
                 data = setGeometryTriangle(gl, new Float32Array(object.vertices), gl.LINE_LOOP);
                 gl.drawArrays(data.mode, 0, data.n);
             }
         }
 
-		fpsEle.innerHTML = "FPS: " + fps + " (" + fpsCounter + ")";
+        fpsEle.innerHTML = "FPS: " + fps + " (" + fpsCounter + ")";
     }
+
+
 
     /**
      * A gameloop to animate
@@ -128,14 +130,14 @@ window.onload = function() {
         var td = (now - (lastTick || now)) / 1000;
         lastTick = now;
 
-		//FPS
-		fpsCounter++;
+        //FPS
+        fpsCounter++;
 
-		if (now >= fpsTimer + 1000) {
-			fps = fpsCounter;
-			fpsCounter = 0;
-			fpsTimer = now;
-		}
+        if (now >= fpsTimer + 1000) {
+            fps = fpsCounter;
+            fpsCounter = 0;
+            fpsTimer = now;
+        }
 
         request = window.requestAnimFrame(gameLoop);
 
@@ -143,19 +145,22 @@ window.onload = function() {
         draw();
     }
 
-	function addRandomTriangle()
-	{
-        var angle = Math.random() * 360;
-		var speed = Math.random() * 20;
-        var color = [Math.random(), Math.random(), Math.random(), 1.0];
-		var verts = [
-				((Math.random() * 2 ) - 1), ((Math.random() * 2 ) - 1),
-				((Math.random() * 2 ) - 1), ((Math.random() * 2 ) - 1),
-				((Math.random() * 2 ) - 1), ((Math.random() * 2 ) - 1),
-			];
 
-		world.add(angle, speed, color, verts);
-	}
+
+    function addRandomTriangle() {
+        var angle = Math.random() * 360;
+        var speed = Math.random() * 20;
+        var color = [Math.random(), Math.random(), Math.random(), 1.0];
+        var verts = [
+            ((Math.random() * 2 ) - 1), ((Math.random() * 2 ) - 1),
+            ((Math.random() * 2 ) - 1), ((Math.random() * 2 ) - 1),
+            ((Math.random() * 2 ) - 1), ((Math.random() * 2 ) - 1),
+        ];
+
+        world.add(angle, speed, color, verts);
+    }
+
+
 
     /**
      * Control panel
@@ -178,7 +183,7 @@ window.onload = function() {
 
     var addElement = document.getElementById("add");
     addElement.addEventListener("click", function() {
-		addRandomTriangle();
+        addRandomTriangle();
     });
 
     var speedElement = document.getElementById("speed");
@@ -186,22 +191,21 @@ window.onload = function() {
         speed = parseFloat(speedElement.value);
     });
 
-	var addMultInpEle = document.getElementById("addMultipleInput");
-	var addMulButtEle = document.getElementById("addMultipleButton");
-	addMulButtEle.addEventListener("click", function () {
-		var n = addMultInpEle.value;
+    var addMultInpEle = document.getElementById("addMultipleInput");
+    var addMulButtEle = document.getElementById("addMultipleButton");
+    addMulButtEle.addEventListener("click", function() {
+        var n = addMultInpEle.value;
 
-		for (var i = 0; i < n; i++) {
-			addRandomTriangle();
-		}
-	});
+        for (var i = 0; i < n; i++) {
+            addRandomTriangle();
+        }
+    });
 
     canvas.onmousedown = function(ev) {
         click(ev, canvas, world.objects);
     };
 
-    function click(ev, canvas, triangles)
-    {
+    function click(ev, canvas, triangles) {
         var x = ev.clientX;
         var y = ev.clientY;
         var rect = ev.target.getBoundingClientRect();
@@ -211,8 +215,7 @@ window.onload = function() {
         y = (canvas.height/2 - (y - rect.top)) / (canvas.height/2);
 
         var clickedTri = -1;
-        for (var i = triangles.length - 1; i >= 0; i--)
-        {
+        for (var i = triangles.length - 1; i >= 0; i--) {
             triangles[i].selected = false;
 
             if (triangles[i].checkClick(x, y) && clickedTri == -1) {
@@ -233,8 +236,7 @@ window.onload = function() {
     var triApply = document.getElementById("selectedTriApply");
     var triRemove = document.getElementById("selectedTriDelete");
 
-    function triangleClicked(id)
-    {
+    function triangleClicked(id) {
         var valid = (id != -1);
         var tri = world.objects[id];
 
@@ -242,7 +244,11 @@ window.onload = function() {
             tri.selected = true;
         }
 
-        triTitle.innerHTML = (valid ? "Triangle (id: " + id + ") selected" : "No triangle selected");
+        triTitle.innerHTML = (
+            valid
+                ? "Triangle (id: " + id + ") selected"
+                : "No triangle selected"
+        );
         triSpeed.disabled = !valid;
         triSpeed.value = (valid ? tri.speed : "");
         triColorR.disabled = !valid;
@@ -267,18 +273,19 @@ window.onload = function() {
             triColorB.value,
             triColorA.value
         ]);
-	});
+    });
 
     triRemove.addEventListener("click", function () {
         world.objects.splice(triClicked, 1);
         triangleClicked(-1);
-	});
+    });
 
     //console.log(gl);
     console.log("Everything is ready.");
     gameLoop();
+};
 
-}();
+
 
 function setGeometryTriangle(gl, tri, mode) {
     var data = {
@@ -289,8 +296,8 @@ function setGeometryTriangle(gl, tri, mode) {
     gl.bufferData(
         gl.ARRAY_BUFFER,
         tri,
-       gl.STATIC_DRAW
-   );
+        gl.STATIC_DRAW
+    );
 
-  return data;
+    return data;
 }

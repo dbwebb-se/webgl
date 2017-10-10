@@ -16,19 +16,17 @@ window.onload = function() {
     ct.font = "48px serif";
     ct.strokeText("My Canvas Sandbox", 10, 50);
 
-    function getMouseCoords(e){
+    function getMouseCoords(e) {
         //var rect = e.target.getBoundingClientRect();
+        var result_x = document.getElementById('x_result');
+        var result_y = document.getElementById('y_result');
 
-    	var result_x = document.getElementById('x_result');
-    	var result_y = document.getElementById('y_result');
-
-    	result_x.innerHTML = e.clientX;
-    	result_y.innerHTML = e.clientY;
+        result_x.innerHTML = e.clientX;
+        result_y.innerHTML = e.clientY;
     }
 
-    function getMouseCoordsOnCanvas(e){
+    function getMouseCoordsOnCanvas(e) {
         var rect = e.target.getBoundingClientRect();
-
         var result_canv_x = document.getElementById('x_canv_result');
         var result_canv_y = document.getElementById('y_canv_result');
 
@@ -36,9 +34,8 @@ window.onload = function() {
         result_canv_y.innerHTML = Math.round(e.clientY - rect.top);
     }
 
-    function getConvertedCoords(e){
+    function getConvertedCoords(e) {
         var rect = e.target.getBoundingClientRect();
-
         var result_conv_x = document.getElementById('x_conv_result');
         var result_conv_y = document.getElementById('y_conv_result');
 
@@ -55,4 +52,4 @@ window.onload = function() {
 
 
     console.log("Everything is ready.");
-}();
+};

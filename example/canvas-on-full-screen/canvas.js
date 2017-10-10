@@ -1,7 +1,7 @@
 /**
  * Module for canvas resizing functions.
  */
-window.Canvas = (function(){
+window.Canvas = (function() {
     "use strict";
 
     // Define variables
@@ -59,10 +59,11 @@ window.Canvas = (function(){
      * Check if full screen is enabled.
      */
     function fullscreenEnabled() {
-        var enabled = document.fullscreenEnabled ||
-                      document.webkitFullscreenEnabled ||
-                      document.mozFullScreenEnabled ||
-                      document.msFullscreenEnabled;
+        var enabled =
+            document.fullscreenEnabled ||
+            document.webkitFullscreenEnabled ||
+            document.mozFullScreenEnabled ||
+            document.msFullscreenEnabled;
 
         console.log("Fullscren is enabled: " + enabled);
         return enabled;
@@ -78,13 +79,13 @@ window.Canvas = (function(){
             res = null;
 
         if (el.requestFullscreen) {
-            res = el.requestFullscreen();
+            res = el.requestFullscreen();
         } else if (el.webkeltRequestFullscreen) {
-            res = el.webkeltRequestFullscreen();
+            res = el.webkeltRequestFullscreen();
         } else if (el.mozRequestFullScreen) {
-            res = el.mozRequestFullScreen();
+            res = el.mozRequestFullScreen();
         } else if (el.msRequestFullscreen) {
-            res = el.msRequestFullscreen();
+            res = el.msRequestFullscreen();
         }
 
         console.log("Fullscreen requested: " + res);
@@ -97,10 +98,11 @@ window.Canvas = (function(){
      * Check if we are fullscreen, return the element or false
      */
     function fullscreenElement() {
-        var el = document.fullscreenElement ||
-                 document.webkitFullscreenElement ||
-                 document.mozFullScreenElement ||
-                 document.msFullscreenElement;
+        var el =
+            document.fullscreenElement ||
+            document.webkitFullscreenElement ||
+            document.mozFullScreenElement ||
+            document.msFullscreenElement;
 
         console.log("The fullscreen element is: " + el);
         return el;
@@ -113,31 +115,31 @@ window.Canvas = (function(){
      */
     function exitFullscreen() {
         if (document.exitFullscreen) {
-            document.exitFullscreen();
+            document.exitFullscreen();
         } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
+            document.webkitExitFullscreen();
         } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
+            document.mozCancelFullScreen();
         } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
+            document.msExitFullscreen();
         }
     }
 
 
-/*
+    /*
     document.addEventListener("fullscreenchange", FShandler);
     document.addEventListener("webkitfullscreenchange", FShandler);
     document.addEventListener("mozfullscreenchange", FShandler);
     document.addEventListener("MSFullscreenChange", FShandler);
-*/
+    */
 
 
-/*
+    /*
     document.addEventListener("fullscreenerror", FSerrorhandler);
     document.addEventListener("webkitfullscreenerror", FSerrorhandler);
     document.addEventListener("mozfullscreenerror", FSerrorhandler);
     document.addEventListener("MSFullscreenError", FSerrorhandler);
-*/
+    */
 
 
     return {

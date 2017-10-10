@@ -1,6 +1,7 @@
 /**
  * Draw on Canvas
  */
+/* global WebGLUtils, Matrix4 */
 window.onload = function() {
     "use strict";
 
@@ -142,7 +143,7 @@ window.onload = function() {
 
     //console.log(gl);
     console.log("Everything is ready.");
-}();
+};
 
 
 

@@ -46,7 +46,7 @@ window.onload = function() {
     literal = [1, 2, "three"];
     html += "<li>" + literal + " - " + typeof(literal);
 
-    literal = function(){};
+    literal = function() {};
     html += "<li>" + literal + " - " + typeof(literal);
 
     html += "</ul>";

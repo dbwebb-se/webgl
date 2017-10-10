@@ -1,6 +1,7 @@
 /**
  * Draw on Canvas
  */
+/* global WebGLUtils, Matrix4 */
 window.onload = function() {
     "use strict";
 
@@ -152,8 +153,7 @@ window.onload = function() {
     //console.log(gl);
     console.log("Everything is ready.");
     gameLoop();
-
-}();
+};
 
 
 
@@ -229,8 +229,8 @@ function setGeometryTriangle(gl) {
             -0.5, -0.5,
              0.5, -0.5,
         ]),
-       gl.STATIC_DRAW
-   );
+        gl.STATIC_DRAW
+    );
 
-  return data;
+    return data;
 }

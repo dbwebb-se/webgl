@@ -1,6 +1,7 @@
 /**
  * Draw on Canvas
  */
+/* global getWebGLContext, initShaders */
 window.onload = function() {
     "use strict";
 
@@ -90,8 +91,7 @@ window.onload = function() {
             // Draw the point
             gl.drawArrays(gl.POINTS, 0, 1);
         }
-
     }
 
     console.log("Everything is ready.");
-}();
+};

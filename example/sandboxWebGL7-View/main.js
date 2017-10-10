@@ -1,107 +1,110 @@
 /**
  * Draw WebGL
  */
+/* global WebGLUtils, Matrix4 */
 
 
 
- /** -------------------------------------------------------------------
-  * Create an object for the control panel.
-  */
- function ControlPanel (view) {
-     this.view = view;
+/** -------------------------------------------------------------------
+ * Create an object for the control panel.
+ */
+function ControlPanel(view) {
+    this.view = view;
 
-     this.elEyeX = document.getElementById("eyeX");
-     this.elEyeY = document.getElementById("eyeY");
-     this.elEyeZ = document.getElementById("eyeZ");
+    this.elEyeX = document.getElementById("eyeX");
+    this.elEyeY = document.getElementById("eyeY");
+    this.elEyeZ = document.getElementById("eyeZ");
 
-     this.elAtX = document.getElementById("atX");
-     this.elAtY = document.getElementById("atY");
-     this.elAtZ = document.getElementById("atZ");
+    this.elAtX = document.getElementById("atX");
+    this.elAtY = document.getElementById("atY");
+    this.elAtZ = document.getElementById("atZ");
 
-     this.elUpX = document.getElementById("upX");
-     this.elUpY = document.getElementById("upY");
-     this.elUpZ = document.getElementById("upZ");
- }
-
-
-
- /**
-  * Update the control panel to reflect current settings.
-  */
- ControlPanel.prototype.updateFromViewObject = function () {
-     this.elEyeX.value = this.view.eyeX;
-     this.elEyeY.value = this.view.eyeY;
-     this.elEyeZ.value = this.view.eyeZ;
-
-     this.elAtX.value = this.view.atX;
-     this.elAtY.value = this.view.atY;
-     this.elAtZ.value = this.view.atZ;
-
-     this.elUpX.value = this.view.upX;
-     this.elUpY.value = this.view.upY;
-     this.elUpZ.value = this.view.upZ;
- };
+    this.elUpX = document.getElementById("upX");
+    this.elUpY = document.getElementById("upY");
+    this.elUpZ = document.getElementById("upZ");
+}
 
 
 
- /**
-  * Update from the control panel to reflect current settings.
-  */
- ControlPanel.prototype.updateViewObject = function () {
-     this.view.eyeX = parseFloat(this.elEyeX.value);
-     this.view.eyeY = parseFloat(this.elEyeY.value);
-     this.view.eyeZ = parseFloat(this.elEyeZ.value);
+/**
+ * Update the control panel to reflect current settings.
+ */
+ControlPanel.prototype.updateFromViewObject = function() {
+    this.elEyeX.value = this.view.eyeX;
+    this.elEyeY.value = this.view.eyeY;
+    this.elEyeZ.value = this.view.eyeZ;
 
-     this.view.atX = parseFloat(this.elAtX.value);
-     this.view.atY = parseFloat(this.elAtY.value);
-     this.view.atZ = parseFloat(this.elAtZ.value);
+    this.elAtX.value = this.view.atX;
+    this.elAtY.value = this.view.atY;
+    this.elAtZ.value = this.view.atZ;
 
-     this.view.upX = parseFloat(this.elUpX.value);
-     this.view.upY = parseFloat(this.elUpY.value);
-     this.view.upZ = parseFloat(this.elUpZ.value);
- };
-
-
-
- /** -------------------------------------------------------------------
-  * Keypress object
-  */
- function KeyPress(view, step) {
-     this.view = view;
-     this.step = step || 0.05;
- }
+    this.elUpX.value = this.view.upX;
+    this.elUpY.value = this.view.upY;
+    this.elUpZ.value = this.view.upZ;
+};
 
 
- /**
-  * Keypress event handler
-  *
-  * @return Boolean true if an update was made, else false
-  */
- KeyPress.prototype.handler = function (event) {
-     console.log(event.keyCode);
 
-     switch (event.keyCode) {
-         case 39:   //ArrowRight
-             this.view.eyeX += this.step;
-         break;
+/**
+ * Update from the control panel to reflect current settings.
+ */
+ControlPanel.prototype.updateViewObject = function() {
+    this.view.eyeX = parseFloat(this.elEyeX.value);
+    this.view.eyeY = parseFloat(this.elEyeY.value);
+    this.view.eyeZ = parseFloat(this.elEyeZ.value);
 
-         case 37:   //ArrowLeft
-             this.view.eyeX -= this.step;
-         break;
+    this.view.atX = parseFloat(this.elAtX.value);
+    this.view.atY = parseFloat(this.elAtY.value);
+    this.view.atZ = parseFloat(this.elAtZ.value);
 
-         case 40:   //ArrowDown
-             this.view.eyeY -= this.step;
-         break;
+    this.view.upX = parseFloat(this.elUpX.value);
+    this.view.upY = parseFloat(this.elUpY.value);
+    this.view.upZ = parseFloat(this.elUpZ.value);
+};
 
-         case 38:   //ArrowUp
-             this.view.eyeY += this.step;
-         break;
 
-         default:
-             return false;
-     }
-     return true;
- };
+
+/** -------------------------------------------------------------------
+ * Keypress object
+ */
+function KeyPress(view, step) {
+    this.view = view;
+    this.step = step || 0.05;
+}
+
+
+
+/**
+ * Keypress event handler
+ *
+ * @return Boolean true if an update was made, else false
+ */
+KeyPress.prototype.handler = function(event) {
+    console.log(event.keyCode);
+
+    switch (event.keyCode) {
+        case 39:   //ArrowRight
+            this.view.eyeX += this.step;
+            break;
+
+        case 37:   //ArrowLeft
+            this.view.eyeX -= this.step;
+            break;
+
+        case 40:   //ArrowDown
+            this.view.eyeY -= this.step;
+            break;
+
+        case 38:   //ArrowUp
+            this.view.eyeY += this.step;
+            break;
+
+        default:
+            return false;
+    }
+
+    return true;
+};
 
 
 
@@ -130,7 +133,11 @@ function View(eyeX, eyeY, eyeZ, atX, atY, atZ, upX, upY, upZ) {
  * Update the matrix based on current values.
  */
 View.prototype.update = function() {
-    this.matrix.setLookAt(this.eyeX, this.eyeY, this.eyeZ, this.atX, this.atY, this.atZ, this.upX, this.upY, this.upZ);
+    this.matrix.setLookAt(
+        this.eyeX, this.eyeY, this.eyeZ,
+        this.atX, this.atY, this.atZ,
+        this.upX, this.upY, this.upZ
+    );
 };
 
 
@@ -160,7 +167,7 @@ function setGeometryThreeTriangles(gl) {
              0.0,  0.5,    0.0, 0.4, 0.4, 1.0,
             -0.5, -0.5,    0.0, 0.4, 0.4, 1.0,
              0.5, -0.5,    0.0, 1.0, 0.4, 0.4
-         ])
+        ])
     };
 
     data.fsize  = data.vertex.BYTES_PER_ELEMENT;
@@ -173,7 +180,7 @@ function setGeometryThreeTriangles(gl) {
 /** -------------------------------------------------------------------
  * Create WebGL context
  */
-function initWebGL () {
+function initWebGL() {
     var canvas;
     var gl;
     var buffer;

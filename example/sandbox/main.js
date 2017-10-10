@@ -21,4 +21,4 @@ window.onload = function() {
     ct.fillRect(100, 100, 200, 300);
 
     console.log("Everything is ready.");
-}();
+};

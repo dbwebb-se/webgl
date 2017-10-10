@@ -1,126 +1,129 @@
 /**
  * Draw WebGL
  */
+/* global WebGLUtils, Matrix4 */
 
 
 
- /** -------------------------------------------------------------------
-  * Create an object for the control panel.
-  */
- function ControlPanel (vm) {
-     this.vm = vm;
+/** -------------------------------------------------------------------
+ * Create an object for the control panel.
+ */
+function ControlPanel(vm) {
+    this.vm = vm;
 
-     this.elEyeX = document.getElementById("eyeX");
-     this.elEyeY = document.getElementById("eyeY");
-     this.elEyeZ = document.getElementById("eyeZ");
+    this.elEyeX = document.getElementById("eyeX");
+    this.elEyeY = document.getElementById("eyeY");
+    this.elEyeZ = document.getElementById("eyeZ");
 
-     this.elAtX = document.getElementById("atX");
-     this.elAtY = document.getElementById("atY");
-     this.elAtZ = document.getElementById("atZ");
+    this.elAtX = document.getElementById("atX");
+    this.elAtY = document.getElementById("atY");
+    this.elAtZ = document.getElementById("atZ");
 
-     this.elUpX = document.getElementById("upX");
-     this.elUpY = document.getElementById("upY");
-     this.elUpZ = document.getElementById("upZ");
+    this.elUpX = document.getElementById("upX");
+    this.elUpY = document.getElementById("upY");
+    this.elUpZ = document.getElementById("upZ");
 
-     this.elAngle = document.getElementById("angle");
-     this.elrx = document.getElementById("rx");
-     this.elry = document.getElementById("ry");
-     this.elrz = document.getElementById("rz");
- }
-
-
-
- /**
-  * Update the control panel to reflect current settings.
-  */
- ControlPanel.prototype.updateFromViewModel = function () {
-     this.elEyeX.value = this.vm.eyeX;
-     this.elEyeY.value = this.vm.eyeY;
-     this.elEyeZ.value = this.vm.eyeZ;
-
-     this.elAtX.value = this.vm.atX;
-     this.elAtY.value = this.vm.atY;
-     this.elAtZ.value = this.vm.atZ;
-
-     this.elUpX.value = this.vm.upX;
-     this.elUpY.value = this.vm.upY;
-     this.elUpZ.value = this.vm.upZ;
-
-     this.elAngle.value = this.vm.angle;
-     this.elrx.value = this.vm.rx;
-     this.elry.value = this.vm.ry;
-     this.elrz.value = this.vm.rz;
- };
+    this.elAngle = document.getElementById("angle");
+    this.elrx = document.getElementById("rx");
+    this.elry = document.getElementById("ry");
+    this.elrz = document.getElementById("rz");
+}
 
 
 
- /**
-  * Update from the control panel to reflect current settings.
-  */
- ControlPanel.prototype.updateViewModel = function () {
-     this.vm.eyeX = parseFloat(this.elEyeX.value);
-     this.vm.eyeY = parseFloat(this.elEyeY.value);
-     this.vm.eyeZ = parseFloat(this.elEyeZ.value);
+/**
+ * Update the control panel to reflect current settings.
+ */
+ControlPanel.prototype.updateFromViewModel = function() {
+    this.elEyeX.value = this.vm.eyeX;
+    this.elEyeY.value = this.vm.eyeY;
+    this.elEyeZ.value = this.vm.eyeZ;
 
-     this.vm.atX = parseFloat(this.elAtX.value);
-     this.vm.atY = parseFloat(this.elAtY.value);
-     this.vm.atZ = parseFloat(this.elAtZ.value);
+    this.elAtX.value = this.vm.atX;
+    this.elAtY.value = this.vm.atY;
+    this.elAtZ.value = this.vm.atZ;
 
-     this.vm.upX = parseFloat(this.elUpX.value);
-     this.vm.upY = parseFloat(this.elUpY.value);
-     this.vm.upZ = parseFloat(this.elUpZ.value);
+    this.elUpX.value = this.vm.upX;
+    this.elUpY.value = this.vm.upY;
+    this.elUpZ.value = this.vm.upZ;
 
-     this.vm.angle = parseFloat(this.elAngle.value);
-     this.vm.rx = parseFloat(this.elrx.value);
-     this.vm.ry = parseFloat(this.elry.value);
-     this.vm.rz = parseFloat(this.elrz.value);
- };
-
-
-
- /** -------------------------------------------------------------------
-  * Keypress object
-  */
- function KeyPress(vm, step) {
-     this.vm = vm;
-     this.step = step || 0.05;
- }
+    this.elAngle.value = this.vm.angle;
+    this.elrx.value = this.vm.rx;
+    this.elry.value = this.vm.ry;
+    this.elrz.value = this.vm.rz;
+};
 
 
- /**
-  * Keypress event handler
-  *
-  * @return Boolean true if an update was made, else false
-  */
- KeyPress.prototype.handler = function (event) {
-     console.log(event.keyCode);
 
-     switch (event.keyCode) {
-         case 39:   //ArrowRight
-             this.vm.eyeX += this.step;
-         break;
+/**
+ * Update from the control panel to reflect current settings.
+ */
+ControlPanel.prototype.updateViewModel = function() {
+    this.vm.eyeX = parseFloat(this.elEyeX.value);
+    this.vm.eyeY = parseFloat(this.elEyeY.value);
+    this.vm.eyeZ = parseFloat(this.elEyeZ.value);
 
-         case 37:   //ArrowLeft
-             this.vm.eyeX -= this.step;
-         break;
+    this.vm.atX = parseFloat(this.elAtX.value);
+    this.vm.atY = parseFloat(this.elAtY.value);
+    this.vm.atZ = parseFloat(this.elAtZ.value);
 
-         case 40:   //ArrowDown
-             this.vm.eyeY -= this.step;
-         break;
+    this.vm.upX = parseFloat(this.elUpX.value);
+    this.vm.upY = parseFloat(this.elUpY.value);
+    this.vm.upZ = parseFloat(this.elUpZ.value);
 
-         case 38:   //ArrowUp
-             this.vm.eyeY += this.step;
-         break;
+    this.vm.angle = parseFloat(this.elAngle.value);
+    this.vm.rx = parseFloat(this.elrx.value);
+    this.vm.ry = parseFloat(this.elry.value);
+    this.vm.rz = parseFloat(this.elrz.value);
+};
 
-         case 82:   //r
-             this.vm.angle += this.step * 20;
-         break;
 
-         default:
-             return false;
-     }
-     return true;
- };
+
+/** -------------------------------------------------------------------
+ * Keypress object
+ */
+function KeyPress(vm, step) {
+    this.vm = vm;
+    this.step = step || 0.05;
+}
+
+
+
+/**
+ * Keypress event handler
+ *
+ * @return Boolean true if an update was made, else false
+ */
+KeyPress.prototype.handler = function(event) {
+    console.log(event.keyCode);
+
+    switch (event.keyCode) {
+        case 39:   //ArrowRight
+            this.vm.eyeX += this.step;
+            break;
+
+        case 37:   //ArrowLeft
+            this.vm.eyeX -= this.step;
+            break;
+
+        case 40:   //ArrowDown
+            this.vm.eyeY -= this.step;
+            break;
+
+        case 38:   //ArrowUp
+            this.vm.eyeY += this.step;
+            break;
+
+        case 82:   //r
+            this.vm.angle += this.step * 20;
+            break;
+
+        default:
+            return false;
+    }
+
+    return true;
+};
 
 
 
@@ -175,7 +178,11 @@ ViewModel.prototype.setView = function(eyeX, eyeY, eyeZ, atX, atY, atZ, upX, upY
  * Update the matrix based on current values.
  */
 ViewModel.prototype.update = function() {
-    this.view.setLookAt(this.eyeX, this.eyeY, this.eyeZ, this.atX, this.atY, this.atZ, this.upX, this.upY, this.upZ);
+    this.view.setLookAt(
+        this.eyeX, this.eyeY, this.eyeZ,
+        this.atX, this.atY, this.atZ,
+        this.upX, this.upY, this.upZ
+    );
 
     this.model.setRotate(this.angle, this.rx, this.ry, this.rz);
 };
@@ -207,7 +214,7 @@ function setGeometryThreeTriangles(gl) {
              0.0,  0.5,    0.0, 0.4, 0.4, 1.0,
             -0.5, -0.5,    0.0, 0.4, 0.4, 1.0,
              0.5, -0.5,    0.0, 1.0, 0.4, 0.4
-         ])
+        ])
     };
 
     data.fsize  = data.vertex.BYTES_PER_ELEMENT;
@@ -220,7 +227,7 @@ function setGeometryThreeTriangles(gl) {
 /** -------------------------------------------------------------------
  * Create WebGL context
  */
-function initWebGL () {
+function initWebGL() {
     var canvas;
     var gl;
     var buffer;

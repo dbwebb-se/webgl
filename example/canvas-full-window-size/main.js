@@ -70,4 +70,4 @@ window.onload = function() {
 
     // All done
     console.log("Everything is ready.");
-}();
+};

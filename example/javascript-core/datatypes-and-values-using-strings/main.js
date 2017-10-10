@@ -1,7 +1,7 @@
 /**
  * Work with strings.
  */
- window.onload = function() {
+window.onload = function() {
     "use strict";
 
     var html,

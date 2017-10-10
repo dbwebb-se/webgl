@@ -2,17 +2,18 @@
  * Boulder dash.
  */
 window.onload = function() {
-     "use strict";
+    "use strict";
 
-     var area = document.getElementById("flash"),
-         gameArea,
-         gameBlocks;
+    var area = document.getElementById("flash"),
+        gameArea,
+        gameBlocks;
 
 
 
     /**
      * This is the background for the game area.
      */
+    /* eslint-disable comma-spacing */
     gameArea = [
         13,14,12,13,14,12,13,14,12,13,14,12,13,14,12,13,14,12,13,14,12,13,14,12,
         12,13,14,12,13,14,12,13,14,12,13,14,12,13,14,12,13,14,12,13,14,12,13,14,
@@ -38,7 +39,7 @@ window.onload = function() {
         13,14,12,13,14,12,13,14,12,13,14,12,13,14,12,13,14,22,21,21,21,21,21,21,
         12,13,14,12,13,14,12,13,14,12,13,14,12,13,14,12,13,14,22,21,21,21,21,21,
         14,12,13,14,12,13,14,12,13,14,12,13,14,12,13,14,12,13,14,22,21,21,21,21,
-     ];
+    ];
 
 
 
@@ -74,6 +75,7 @@ window.onload = function() {
       19,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,18,19,
       19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,
     ];
+    /* eslint-enable comma-spacing */
 
 
 
@@ -90,7 +92,7 @@ window.onload = function() {
         for (i = 0; i < gameArea.length; i++) {
             element = document.createElement("div");
             element.innerHTML = "";
-            block = (gameBlocks[i] ? " b" + gameBlocks[i] : "");
+            block = (gameBlocks[i] ? " b" + gameBlocks[i] : "");
             element.className = "tile t" + gameArea[i] + block;
             element.id = "n" + i;
             area.appendChild(element);

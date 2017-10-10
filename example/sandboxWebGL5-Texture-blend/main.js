@@ -1,6 +1,8 @@
 /**
  * Draw on Canvas
  */
+/* global WebGLUtils, Matrix4 */
+/* eslint camelcase: "off" */
 window.onload = function() {
     "use strict";
 
@@ -96,7 +98,6 @@ window.onload = function() {
     var loadedImages = 0;
 
     function mapImage2Texture(image, texture, textureVar) {
-
         // Map image to choosen texture
         gl.activeTexture(texture);
         gl.bindTexture(gl.TEXTURE_2D, textureVar);
@@ -157,7 +158,7 @@ window.onload = function() {
 
     //console.log(gl);
     console.log("Everything is ready.");
-}();
+};
 
 
 

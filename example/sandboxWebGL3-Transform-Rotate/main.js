@@ -1,6 +1,7 @@
 /**
  * Draw on Canvas
  */
+/* global WebGLUtils */
 window.onload = function() {
     "use strict";
 
@@ -100,14 +101,14 @@ window.onload = function() {
 
     console.log(gl);
     console.log("Everything is ready.");
-}();
+};
 
 
 
 /**
  * A full square.
  */
- /*
+/*
 function setGeometrySquareFull(gl) {
     var data = {
         n: 6,
@@ -135,7 +136,7 @@ function setGeometrySquareFull(gl) {
 /**
  * Half a square.
  */
- /*
+/*
 function setGeometrySquareHalf(gl) {
     var data = {
         n: 6,
@@ -176,8 +177,8 @@ function setGeometryTriangle(gl) {
             -0.5, -0.5,
              0.5, -0.5,
         ]),
-       gl.STATIC_DRAW
-   );
+        gl.STATIC_DRAW
+    );
 
-  return data;
+    return data;
 }

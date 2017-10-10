@@ -1,6 +1,7 @@
 /**
  * Make Canvas as large as the window
  */
+/* global Canvas */
 window.onload = function() {
     "use strict";
 
@@ -55,23 +56,23 @@ window.onload = function() {
             case 39:   //ArrowRight
             case 40:   //ArrowDown
                 //play();
-            break;
+                break;
             case 8:    //Backspace
             case 37:   //ArrowLeft
             case 38:   //ArrowUp
                 //play(true);
-            break;
+                break;
             case 70:  //f
                 Canvas.resizeFullBrowserSize();
                 draw();
-            break;
+                break;
             case 190:  //Period
                 Canvas.resizeDefault();
                 draw();
-            break;
+                break;
             default:
                 return;
-            }
+        }
 
         return false;
     }
@@ -87,4 +88,4 @@ window.onload = function() {
     draw();
 
     console.log("Everything is ready.");
-}();
+};

@@ -1,6 +1,7 @@
 /**
  * Draw on Canvas
  */
+/* global WebGLUtils */
 window.onload = function() {
     "use strict";
 
@@ -114,7 +115,7 @@ window.onload = function() {
 
     console.log(gl);
     console.log("Everything is ready.");
-}();
+};
 
 
 
@@ -190,8 +191,8 @@ function setGeometryTriangle(gl) {
             -0.5, -0.5,
              0.5, -0.5,
         ]),
-       gl.STATIC_DRAW
-   );
+        gl.STATIC_DRAW
+    );
 
-  return data;
+    return data;
 }

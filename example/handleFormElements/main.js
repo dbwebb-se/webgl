@@ -14,12 +14,22 @@ window.onload = function() {
     });
 
     submitButton.addEventListener("click", function() {
-        document.getElementById("firstnameResult").innerHTML = "Name: " + document.getElementById("firstname").value + " ";
-        document.getElementById("lastnameResult").innerHTML = document.getElementById("lastname").value;
-        document.getElementById("passwordResult").innerHTML = "Password: " + document.getElementById("password").value;
-        document.getElementById("numberResult").innerHTML = "Chosen number: " + document.getElementById("number").value;
-        document.getElementById("textareaResult").innerHTML = "Textmessage: " + document.getElementById("textarea").value;
+        document.getElementById("firstnameResult").innerHTML =
+            "Name: "
+            + document.getElementById("firstname").value
+            + " ";
+        document.getElementById("lastnameResult").innerHTML =
+            document.getElementById("lastname").value;
+        document.getElementById("passwordResult").innerHTML =
+            "Password: "
+            + document.getElementById("password").value;
+        document.getElementById("numberResult").innerHTML =
+            "Chosen number: "
+            + document.getElementById("number").value;
+        document.getElementById("textareaResult").innerHTML =
+            "Textmessage: "
+            + document.getElementById("textarea").value;
     });
 
     console.log("Everything is ready.");
-}();
+};

@@ -1,163 +1,166 @@
 /**
  * Draw WebGL
  */
+/* global WebGLUtils, Matrix4 */
 
 
 
- /** -------------------------------------------------------------------
-  * Create an object for the control panel.
-  */
- function ControlPanel (mvp) {
-     this.mvp = mvp;
+/** -------------------------------------------------------------------
+ * Create an object for the control panel.
+ */
+function ControlPanel(mvp) {
+    this.mvp = mvp;
 
-     this.elEyeX = document.getElementById("eyeX");
-     this.elEyeY = document.getElementById("eyeY");
-     this.elEyeZ = document.getElementById("eyeZ");
+    this.elEyeX = document.getElementById("eyeX");
+    this.elEyeY = document.getElementById("eyeY");
+    this.elEyeZ = document.getElementById("eyeZ");
 
-     this.elAtX = document.getElementById("atX");
-     this.elAtY = document.getElementById("atY");
-     this.elAtZ = document.getElementById("atZ");
+    this.elAtX = document.getElementById("atX");
+    this.elAtY = document.getElementById("atY");
+    this.elAtZ = document.getElementById("atZ");
 
-     this.elUpX = document.getElementById("upX");
-     this.elUpY = document.getElementById("upY");
-     this.elUpZ = document.getElementById("upZ");
+    this.elUpX = document.getElementById("upX");
+    this.elUpY = document.getElementById("upY");
+    this.elUpZ = document.getElementById("upZ");
 
-     this.elAngle = document.getElementById("angle");
-     this.elrx = document.getElementById("rx");
-     this.elry = document.getElementById("ry");
-     this.elrz = document.getElementById("rz");
+    this.elAngle = document.getElementById("angle");
+    this.elrx = document.getElementById("rx");
+    this.elry = document.getElementById("ry");
+    this.elrz = document.getElementById("rz");
 
-     this.elLeft   = document.getElementById("left");
-     this.elRight  = document.getElementById("right");
-     this.elBottom = document.getElementById("bottom");
-     this.elTop    = document.getElementById("top");
-     this.elNear   = document.getElementById("near");
-     this.elFar    = document.getElementById("far");
- }
+    this.elLeft   = document.getElementById("left");
+    this.elRight  = document.getElementById("right");
+    this.elBottom = document.getElementById("bottom");
+    this.elTop    = document.getElementById("top");
+    this.elNear   = document.getElementById("near");
+    this.elFar    = document.getElementById("far");
+}
 
 
 
- /**
-  * Update the control panel to reflect current settings.
-  */
- ControlPanel.prototype.updateFromMVP = function () {
-     this.elEyeX.value = this.mvp.eyeX;
-     this.elEyeY.value = this.mvp.eyeY;
-     this.elEyeZ.value = this.mvp.eyeZ;
+/**
+ * Update the control panel to reflect current settings.
+ */
+ControlPanel.prototype.updateFromMVP = function() {
+    this.elEyeX.value = this.mvp.eyeX;
+    this.elEyeY.value = this.mvp.eyeY;
+    this.elEyeZ.value = this.mvp.eyeZ;
 
-     this.elAtX.value = this.mvp.atX;
-     this.elAtY.value = this.mvp.atY;
-     this.elAtZ.value = this.mvp.atZ;
+    this.elAtX.value = this.mvp.atX;
+    this.elAtY.value = this.mvp.atY;
+    this.elAtZ.value = this.mvp.atZ;
 
-     this.elUpX.value = this.mvp.upX;
-     this.elUpY.value = this.mvp.upY;
-     this.elUpZ.value = this.mvp.upZ;
+    this.elUpX.value = this.mvp.upX;
+    this.elUpY.value = this.mvp.upY;
+    this.elUpZ.value = this.mvp.upZ;
 
-     this.elAngle.value = this.mvp.angle;
-     this.elrx.value    = this.mvp.rx;
-     this.elry.value    = this.mvp.ry;
-     this.elrz.value    = this.mvp.rz;
+    this.elAngle.value = this.mvp.angle;
+    this.elrx.value    = this.mvp.rx;
+    this.elry.value    = this.mvp.ry;
+    this.elrz.value    = this.mvp.rz;
 
-     this.elLeft.value   = this.mvp.left;
-     this.elRight.value  = this.mvp.right;
-     this.elBottom.value = this.mvp.bottom;
-     this.elTop.value    = this.mvp.top;
-     this.elNear.value   = this.mvp.near;
-     this.elFar.value    = this.mvp.far;
+    this.elLeft.value   = this.mvp.left;
+    this.elRight.value  = this.mvp.right;
+    this.elBottom.value = this.mvp.bottom;
+    this.elTop.value    = this.mvp.top;
+    this.elNear.value   = this.mvp.near;
+    this.elFar.value    = this.mvp.far;
 };
 
 
 
- /**
-  * Update from the control panel to reflect current settings.
-  */
- ControlPanel.prototype.updateMVP = function () {
-     this.mvp.eyeX = parseFloat(this.elEyeX.value);
-     this.mvp.eyeY = parseFloat(this.elEyeY.value);
-     this.mvp.eyeZ = parseFloat(this.elEyeZ.value);
+/**
+ * Update from the control panel to reflect current settings.
+ */
+ControlPanel.prototype.updateMVP = function() {
+    this.mvp.eyeX = parseFloat(this.elEyeX.value);
+    this.mvp.eyeY = parseFloat(this.elEyeY.value);
+    this.mvp.eyeZ = parseFloat(this.elEyeZ.value);
 
-     this.mvp.atX = parseFloat(this.elAtX.value);
-     this.mvp.atY = parseFloat(this.elAtY.value);
-     this.mvp.atZ = parseFloat(this.elAtZ.value);
+    this.mvp.atX = parseFloat(this.elAtX.value);
+    this.mvp.atY = parseFloat(this.elAtY.value);
+    this.mvp.atZ = parseFloat(this.elAtZ.value);
 
-     this.mvp.upX = parseFloat(this.elUpX.value);
-     this.mvp.upY = parseFloat(this.elUpY.value);
-     this.mvp.upZ = parseFloat(this.elUpZ.value);
+    this.mvp.upX = parseFloat(this.elUpX.value);
+    this.mvp.upY = parseFloat(this.elUpY.value);
+    this.mvp.upZ = parseFloat(this.elUpZ.value);
 
-     this.mvp.angle = parseFloat(this.elAngle.value);
-     this.mvp.rx    = parseFloat(this.elrx.value);
-     this.mvp.ry    = parseFloat(this.elry.value);
-     this.mvp.rz    = parseFloat(this.elrz.value);
+    this.mvp.angle = parseFloat(this.elAngle.value);
+    this.mvp.rx    = parseFloat(this.elrx.value);
+    this.mvp.ry    = parseFloat(this.elry.value);
+    this.mvp.rz    = parseFloat(this.elrz.value);
 
-     this.mvp.left   = parseFloat(this.elLeft.value);
-     this.mvp.right  = parseFloat(this.elRight.value);
-     this.mvp.bottom = parseFloat(this.elBottom.value);
-     this.mvp.top    = parseFloat(this.elTop.value);
-     this.mvp.near   = parseFloat(this.elNear.value);
-     this.mvp.far    = parseFloat(this.elFar.value);
+    this.mvp.left   = parseFloat(this.elLeft.value);
+    this.mvp.right  = parseFloat(this.elRight.value);
+    this.mvp.bottom = parseFloat(this.elBottom.value);
+    this.mvp.top    = parseFloat(this.elTop.value);
+    this.mvp.near   = parseFloat(this.elNear.value);
+    this.mvp.far    = parseFloat(this.elFar.value);
 };
 
 
 
- /** -------------------------------------------------------------------
-  * Keypress object
-  */
- function KeyPress(mvp, step) {
-     this.mvp = mvp;
-     this.step = step || 0.05;
- }
+/** -------------------------------------------------------------------
+ * Keypress object
+ */
+function KeyPress(mvp, step) {
+    this.mvp = mvp;
+    this.step = step || 0.05;
+}
 
 
- /**
-  * Keypress event handler
-  *
-  * @return Boolean true if an update was made, else false
-  */
- KeyPress.prototype.handler = function (event) {
-     console.log(event.keyCode);
 
-     switch (event.keyCode) {
-         case 39:   //ArrowRight
-             this.mvp.eyeX += this.step;
-         break;
+/**
+ * Keypress event handler
+ *
+ * @return Boolean true if an update was made, else false
+ */
+KeyPress.prototype.handler = function(event) {
+    console.log(event.keyCode);
 
-         case 37:   //ArrowLeft
-             this.mvp.eyeX -= this.step;
-         break;
+    switch (event.keyCode) {
+        case 39:   //ArrowRight
+            this.mvp.eyeX += this.step;
+            break;
 
-         case 40:   //ArrowDown
-             this.mvp.eyeY -= this.step;
-         break;
+        case 37:   //ArrowLeft
+            this.mvp.eyeX -= this.step;
+            break;
 
-         case 38:   //ArrowUp
-             this.mvp.eyeY += this.step;
-         break;
+        case 40:   //ArrowDown
+            this.mvp.eyeY -= this.step;
+            break;
 
-         case 82:   //r
-             this.mvp.angle += this.step * 20;
-         break;
+        case 38:   //ArrowUp
+            this.mvp.eyeY += this.step;
+            break;
 
-         case 85:   //u
-             this.mvp.near += this.step;
-         break;
+        case 82:   //r
+            this.mvp.angle += this.step * 20;
+            break;
 
-         case 73:   //i
-             this.mvp.near -= this.step;
-         break;
+        case 85:   //u
+            this.mvp.near += this.step;
+            break;
 
-         case 74:   //j
-             this.mvp.far += this.step;
-         break;
+        case 73:   //i
+            this.mvp.near -= this.step;
+            break;
 
-         case 75:   //k
-             this.mvp.far -= this.step;
-         break;
+        case 74:   //j
+            this.mvp.far += this.step;
+            break;
 
-         default:
-             return false;
-     }
-     return true;
- };
+        case 75:   //k
+            this.mvp.far -= this.step;
+            break;
+
+        default:
+            return false;
+    }
+
+    return true;
+};
 
 
 
@@ -221,7 +224,11 @@ MVP.prototype.setView = function(eyeX, eyeY, eyeZ, atX, atY, atZ, upX, upY, upZ)
  * Update the matrix based on current values.
  */
 MVP.prototype.update = function() {
-    this.view.setLookAt(this.eyeX, this.eyeY, this.eyeZ, this.atX, this.atY, this.atZ, this.upX, this.upY, this.upZ);
+    this.view.setLookAt(
+        this.eyeX, this.eyeY, this.eyeZ,
+        this.atX, this.atY, this.atZ,
+        this.upX, this.upY, this.upZ
+    );
 
     this.model.setRotate(this.angle, this.rx, this.ry, this.rz);
 
@@ -255,7 +262,7 @@ function setGeometryThreeTriangles(gl) {
              0.0,  0.5,    0.0, 0.4, 0.4, 1.0,
             -0.5, -0.5,    0.0, 0.4, 0.4, 1.0,
              0.5, -0.5,    0.0, 1.0, 0.4, 0.4
-         ])
+        ])
     };
 
     data.fsize  = data.vertex.BYTES_PER_ELEMENT;
@@ -268,7 +275,7 @@ function setGeometryThreeTriangles(gl) {
 /** -------------------------------------------------------------------
  * Create WebGL context
  */
-function initWebGL () {
+function initWebGL() {
     var canvas;
     var gl;
     var buffer;

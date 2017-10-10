@@ -57,4 +57,4 @@ window.onload = function() {
     ct.stroke();
 
     console.log("Everything is ready.");
-}();
+};
