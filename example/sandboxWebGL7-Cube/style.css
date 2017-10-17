@@ -1,6 +1,6 @@
 html {
     background-color: #ccc;
-}    
+}
 
 main {
     margin: 8px auto;
@@ -20,7 +20,7 @@ footer {
 .canvas {
     display: block;
     margin: 20px auto;
-    border:1px solid #999;
+    border: 1px solid #999;
     background-color: #fff;
 }
 

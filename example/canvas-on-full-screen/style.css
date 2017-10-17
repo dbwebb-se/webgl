@@ -1,6 +1,6 @@
 html {
     background-color: #ccc;
-}    
+}
 
 main {
     margin: 8px auto;
@@ -31,6 +31,7 @@ main {
 /**
  * Resize on fullscreen not consistent.
  */
+
 /*
 :-webkit-full-screen {
     position: fixed;
@@ -38,7 +39,7 @@ main {
     top: 0;
     background: none;
 }
- 
+
 :-ms-fullscreen {
     width: auto;
     height: auto;

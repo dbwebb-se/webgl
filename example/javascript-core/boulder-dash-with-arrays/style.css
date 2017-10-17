@@ -1,7 +1,6 @@
-
 /** --------------------------------------------------------------
  * Boulder Dash Gameplan
- * 
+ *
  */
 .flash {
     overflow: auto;
@@ -83,7 +82,7 @@
     background-color: green;
 }
 
-.b17 {  
+.b17 {
     background-image: url(//dbwebb.se/img/tiles/passage/dngn_open_door.png);
     background-color: #bbb;
 }
