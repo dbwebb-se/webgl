@@ -23,7 +23,7 @@ webgl()
 #
 function webgllast()
 {
-    inspectMe "me/redovisa" "me.html" "redovisning.html"
+    inspectMe "me/redovisa" "me.html" "redovisning.html" "" "redovisa"
 }
 
 
@@ -33,8 +33,10 @@ function webgllast()
 #
 webglkmom01()
 {
-    webglexercise "lab1" "answer.html" "uppgift/javascript-med-variabler-loopar-och-inbyggda-funktioner"
-    webglexercise "sandbox" "index.html" "uppgift/skapa-din-egen-sandbox-for-javascript-testprogram"
+    inspectLab "uppgift/javascript-med-variabler-och-inbyggda-funktioner" "lab1" "answer.js" "" "answer.html"
+
+    inspectExercise "sandbox2" "uppgift/rita-punkter-med-webgl" "" "" "index.html"
+    inspectExercise "point" "uppgift/rita-punkter-med-webgl" "" "" "index.html"
 }
 
 
@@ -44,9 +46,11 @@ webglkmom01()
 #
 webglkmom02()
 {
-    webglexercise "lab2" "answer.html" "uppgift/javascript-med-funktioner"
-    webglexercise "flag1" "index.html" "uppgift/gor-svenska-flaggan-i-html-och-css"
-    webglexercise "baddie1" "index.html" "uppgift/flytta-runt-en-baddie-pa-webbsidan"
+    inspectLab "uppgift/javascript-med-villkor-och-loopar" "lab2" "answer.js" "" "answer.html"
+    inspectLab "uppgift/javascript-med-funktioner" "lab3" "answer.js" "" "answer.html"
+
+    inspectExercise "sandbox3" "uppgift/rita-trianglar-med-webgl-och-animera-dem" "" "" "index.html"
+    inspectExercise "tri" "uppgift/rita-trianglar-med-webgl-och-animera-dem" "" "" "index.html"
 }
 
 
@@ -56,22 +60,10 @@ webglkmom02()
 #
 webglkmom03()
 {
-    webglexercise "lab3" "answer.html" "uppgift/javascript-och-arrayer"
-    webglexercise "flag2" "index.html" "uppgift/gor-svenska-flaggan-med-javascript-html-och-css"
-    webglexercise "baddie2" "index.html" "uppgift/flytta-baddie-pa-webbsida-2"
-}
+    inspectLab "uppgift/javascript-och-arrayer" "lab4" "answer.js" "" "answer.html"
+    inspectLab "uppgift/javascript-och-objekt" "lab5" "answer.js" "" "answer.html"
 
-
-
-#
-# Test webgl kmom04
-#
-webglkmom04()
-{
-    webglexercise "lab4" "answer.html" "uppgift/javascript-och-arrayer"
-    webglexercise "lab5" "answer.html" "uppgift/javascript-och-objekt"
-    webglexercise "flag3" "index.html" "uppgift/gor-svenska-flaggan-med-javascript-och-objekt"
-    webglexercise "baddie3" "index.html" "uppgift/flytta-baddie-pa-webbsida-3"
+    inspectExercise "world" "uppgift/skapa-en-animerad-3d-varld" "" "" "index.html"
 }
 
 
@@ -81,48 +73,5 @@ webglkmom04()
 #
 webglkmom05()
 {
-    webglexercise "dom" "index.html" "uppgift/javascript-dom-och-events"
-    webglexercise "flag4" "index.html" "uppgift/memory-rita-flaggor-med-javascript-och-dom"
-}
-
-
-
-#
-# Test webgl kmom
-#
-webglkmom06()
-{
-    webglexercise "hangman" "index.html" "uppgift/hanga-gubben-som-modul-i-javascript"
-}
-
-
-
-#
-# Test webgl kmom
-#
-webglkmom10()
-{
-    webglexercise "intelligence" "index.html" "webgl/kmom10"
-}
-
-
-
-#---------------------- BELOW SHOULD BE REPLACED ----------------------------
-
-#
-# Test webgl sandbox
-# REPLACE with inspectLab
-#
-webglexercise()
-{
-    local lab="$1"
-    local main="$2"
-    local url="$3"
-    local target="me/$KMOM/$lab"
-
-    headerForTest "-- $lab" "-- ${DBW_WWW}$url"
-    openFilesInEditor "$target"
-    checkKmomDir "$target"
-    fileIsReadable "$target/$main"
-    printUrl "$main" "$target"  
+    inspectExercise "proj" "kurser/webgl/kmom05" "" "" "index.html"
 }

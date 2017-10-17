@@ -29,6 +29,22 @@ dbwebb validate redovisa
 
 
 
+#
+# sandbox2
+#
+rsync -a example/sandbox/ me/kmom01/sandbox2/
+dbwebb validate sandbox2
+
+
+
+#
+# point
+#
+rsync -a example/sandbox/ me/kmom01/point/
+#dbwebb validate point
+
+
+
 # --------------------------------------------------------------------------
 #
 # Kmom02
@@ -43,17 +59,59 @@ dbwebb validate lab2
 
 
 
+#
+# Lab 3
+#
+dbwebb recreate lab3
+cd me/kmom02/lab3
+dbwebb validate lab3
+
+
+
+#
+# sandbox3
+#
+rsync -a example/sandbox/ me/kmom02/sandbox3/
+#dbwebb validate sandbox3
+
+
+
+#
+# tri
+#
+rsync -a example/sandbox/ me/kmom02/tri/
+#dbwebb validate tri
+
+
+
 # --------------------------------------------------------------------------
 #
 # Kmom03
 #
 
 #
-# Lab 3
+# Lab 4
 #
-dbwebb recreate lab3
-cd me/kmom03/lab3
-dbwebb validate lab3
+dbwebb recreate lab4
+cd me/kmom03/lab4
+dbwebb validate lab4
+
+
+
+#
+# Lab 5
+#
+dbwebb recreate lab5
+cd me/kmom03/lab5
+dbwebb validate lab5
+
+
+
+#
+# world
+#
+rsync -a example/sandbox/ me/kmom03/world/
+#dbwebb validate world
 
 
 
@@ -61,3 +119,20 @@ dbwebb validate lab3
 #
 # Kmom04/05
 #
+
+#
+# proj
+#
+rsync -a example/sandbox/ me/kmom05/proj/
+#dbwebb validate proj
+
+
+
+# --------------------------------------------------------------------------
+#
+# Inspect
+#
+make dbwebb-inspect options="--yes --no-validate" what=kmom01
+make dbwebb-inspect options="--yes --no-validate" what=kmom02
+make dbwebb-inspect options="--yes --no-validate" what=kmom03
+make dbwebb-inspect options="--yes --no-validate" what=kmom05

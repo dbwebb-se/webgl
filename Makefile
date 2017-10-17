@@ -197,6 +197,7 @@ dbwebb-install: prepare
 	chmod 755 $(DBWEBB)
 	$(DBWEBB) config create noinput
 	(cd bin; rm dbwebb-validate1; ln -s dbwebb-validate dbwebb-validate1)
+	(cd bin; rm dbwebb-inspect1; ln -s dbwebb-inspect dbwebb-inspect1)
 
 
 
@@ -286,7 +287,7 @@ dbwebb-inspect-check:
 .PHONY: dbwebb-inspect
 dbwebb-inspect:
 	@$(call HELPTEXT,$@)
-	env PATH=$(PATH) $(DBWEBB_INSPECT) . $(what) $(arg1) $(kmom)
+	env PATH=$(PATH) $(DBWEBB_INSPECT) $(options) . $(what) $(arg1) $(kmom)
 
 
 
