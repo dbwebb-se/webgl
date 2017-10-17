@@ -2,6 +2,12 @@ Revision History
 ===================
 
 
+v2.0.1 (2017-10-17)
+-------------------
+
+* Pass all tests and inspect on all kmoms.
+
+
 v2.0.0 (2017-10-17)
 -------------------
 
