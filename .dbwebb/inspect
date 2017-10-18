@@ -34,6 +34,7 @@ function webgllast()
 webglkmom01()
 {
     inspectLab "uppgift/javascript-med-variabler-och-inbyggda-funktioner" "lab1" "answer.js" "" "answer.html"
+    inspectLab "uppgift/javascript-med-villkor-och-loopar" "lab2" "answer.js" "" "answer.html"
 
     inspectExercise "sandbox2" "uppgift/rita-punkter-med-webgl" "" "" "index.html"
     inspectExercise "point" "uppgift/rita-punkter-med-webgl" "" "" "index.html"
@@ -46,8 +47,8 @@ webglkmom01()
 #
 webglkmom02()
 {
-    inspectLab "uppgift/javascript-med-villkor-och-loopar" "lab2" "answer.js" "" "answer.html"
     inspectLab "uppgift/javascript-med-funktioner" "lab3" "answer.js" "" "answer.html"
+    inspectLab "uppgift/javascript-och-arrayer" "lab4" "answer.js" "" "answer.html"
 
     inspectExercise "sandbox3" "uppgift/rita-trianglar-med-webgl-och-animera-dem" "" "" "index.html"
     inspectExercise "tri" "uppgift/rita-trianglar-med-webgl-och-animera-dem" "" "" "index.html"
@@ -60,7 +61,6 @@ webglkmom02()
 #
 webglkmom03()
 {
-    inspectLab "uppgift/javascript-och-arrayer" "lab4" "answer.js" "" "answer.html"
     inspectLab "uppgift/javascript-och-objekt" "lab5" "answer.js" "" "answer.html"
 
     inspectExercise "world" "uppgift/skapa-en-animerad-3d-varld" "" "" "index.html"
