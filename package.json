@@ -16,10 +16,5 @@
     "eslint-plugin-react": "^7.3.0",
     "stylelint": "^8.2.0",
     "stylelint-config-standard": "^17.0.0"
-  },
-  "dependencies": {
-    "express": "^4.16.2",
-    "jstransformer-markdown-it": "^2.0.0",
-    "pug": "^2.0.0-rc.4"
   }
 }
