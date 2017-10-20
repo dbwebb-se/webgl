@@ -21,6 +21,15 @@ dbwebb validate lab1
 
 
 #
+# Lab 2
+#
+dbwebb recreate lab2
+cd me/kmom01/lab2
+dbwebb validate lab2
+
+
+
+#
 # Bas till me-sidan
 #
 cp -r example/redovisa me
@@ -51,20 +60,20 @@ rsync -a example/sandbox/ me/kmom01/point/
 #
 
 #
-# Lab 2
-#
-dbwebb recreate lab2
-cd me/kmom02/lab2
-dbwebb validate lab2
-
-
-
-#
 # Lab 3
 #
 dbwebb recreate lab3
 cd me/kmom02/lab3
 dbwebb validate lab3
+
+
+
+#
+# Lab 4
+#
+dbwebb recreate lab4
+cd me/kmom02/lab4
+dbwebb validate lab4
 
 
 
@@ -88,15 +97,6 @@ rsync -a example/sandbox/ me/kmom02/tri/
 #
 # Kmom03
 #
-
-#
-# Lab 4
-#
-dbwebb recreate lab4
-cd me/kmom03/lab4
-dbwebb validate lab4
-
-
 
 #
 # Lab 5
