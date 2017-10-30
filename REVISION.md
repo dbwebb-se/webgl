@@ -2,6 +2,12 @@ Revision History
 ===================
 
 
+v2.0.2 (2017-10-30)
+-------------------
+
+* Remove old validators and upgrade existing.
+
+
 v2.0.1 (2017-10-17)
 -------------------
 
