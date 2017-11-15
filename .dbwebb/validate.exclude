@@ -10,6 +10,7 @@
 -*/cache/*
 -*/docs/*
 -*/lib/*
+-*/libs/*
 -*.min.*
 -*.png
 -*.jpg
