@@ -23,7 +23,7 @@ webgl()
 #
 function webgllast()
 {
-    inspectMe "me/redovisa" "me.html" "redovisning.html" "" "redovisa"
+    inspectMe "me/portfolio" "index.html" "redovisning.html" "" "portfolio"
 }
 
 
