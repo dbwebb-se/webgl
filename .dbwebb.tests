@@ -32,9 +32,9 @@ dbwebb validate lab2
 #
 # Bas till me-sidan
 #
-cp -r example/redovisa me
-cd me/redovisa
-dbwebb validate redovisa
+cp -r example/portfolio me
+cd me/portfolio
+dbwebb validate portfolio
 
 
 
