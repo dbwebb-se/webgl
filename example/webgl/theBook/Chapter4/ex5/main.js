@@ -1,7 +1,10 @@
 /**
  * Draw on Canvas
  */
-window.onload = function() {
+
+/* global getWebGLContext initShaders Matrix4 */
+
+window.onload = (function() {
     "use strict";
 
     // Vertex shader program
@@ -97,7 +100,6 @@ window.onload = function() {
     }
 
     function draw(gl, n, currentAngle, modelMatrix, u_ModelMatrix) {
-
         modelMatrix.setRotate(currentAngle, 0, 0, 1);
 
         modelMatrix.translate(0.35, 0, 0);
@@ -110,12 +112,11 @@ window.onload = function() {
 
         // Draw three points
         gl.drawArrays(gl.TRIANGLES, 0, n);
-    };
+    }
 
     var g_last = Date.now();
 
     function animate(angle) {
-
         // Calculate elapsed time
         var now = Date.now();
 
@@ -126,7 +127,7 @@ window.onload = function() {
         var newAngle = angle + (ANGLE_STEP * elapsed) / 1000.0;
 
         return newAngle %= 360;
-    };
+    }
 
     document.getElementById("up").addEventListener("click", function() {
         ANGLE_STEP += 10;
@@ -139,4 +140,4 @@ window.onload = function() {
     tick();
 
     console.log("Everything is ready.");
-}();
+})();

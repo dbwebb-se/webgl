@@ -1,7 +1,10 @@
 /**
  * Draw on Canvas
  */
-window.onload = function() {
+
+/* global getWebGLContext initShaders Matrix4 */
+
+window.onload = (function() {
     "use strict";
 
     // Vertex shader program
@@ -97,4 +100,4 @@ window.onload = function() {
     }
 
     console.log("Everything is ready.");
-}();
+})();

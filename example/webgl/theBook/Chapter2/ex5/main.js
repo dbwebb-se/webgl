@@ -1,7 +1,10 @@
 /**
  * Draw on Canvas
  */
-window.onload = function() {
+
+/* global getWebGLContext initShaders */
+
+window.onload = (function() {
     "use strict";
 
     // Vertex shader program
@@ -43,7 +46,7 @@ window.onload = function() {
     // Register eventhandler, mouse click
     canvas.onmousedown = function(ev) {
         click(ev, gl, canvas, a_Position);
-    }
+    };
 
     gl.clear(gl.COLOR_BUFFER_BIT);
 
@@ -69,12 +72,7 @@ window.onload = function() {
             // Draw the point
             gl.drawArrays(gl.POINTS, 0, 1);
         }
-
     }
 
-
-
-
-
     console.log("Everything is ready.");
-}();
+})();

@@ -1,7 +1,10 @@
 /**
  * Draw on Canvas
  */
-window.onload = function() {
+
+/* global getWebGLContext initShaders */
+
+window.onload = (function() {
     "use strict";
 
     // Vertex shader program
@@ -55,4 +58,4 @@ window.onload = function() {
     gl.drawArrays(gl.POINTS, 0, 1);
 
     console.log("Everything is ready.");
-}();
+})();

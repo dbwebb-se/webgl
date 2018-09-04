@@ -1,7 +1,9 @@
 /**
- * Draw on Canvas
- */
-window.onload = function() {
+* Draw on Canvas
+*/
+
+/* global THREE */
+window.onload = (function() {
     "use strict";
 
     var canvas = document.getElementById("canvas1");
@@ -20,7 +22,6 @@ window.onload = function() {
         //stats: null,
 
         init: function() {
-
             // EXTRA Get the chosen files
             // objFile = document.getElementById("objFile").value;
             // mtlFile = document.getElementById("mtlFile").value;
@@ -80,21 +81,25 @@ window.onload = function() {
         loadModel: function() {
             // prepare loader and load the model
             var oLoader = new THREE.OBJMTLLoader();
-            oLoader.load('objects/' + objFile + '.obj', 'objects/' + mtlFile + '.mtl', function(object) {
-            object.position.x = 0;
-            object.position.y = 0;
-            object.position.z = 0;
-            object.scale.set(1, 1, 1);
-            myObj.scene.add(object);
-        },
-    	// Function called when downloads progress
-    	function ( xhr ) {
-    		console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
-    	},
-    	// Function called when downloads error
-    	function ( /* xhr */ ) {
-    		console.log( 'An error happened' );
-    	});
+            oLoader.load(
+                'objects/' + objFile + '.obj',
+                'objects/' + mtlFile + '.mtl',
+                function (object) {
+                    object.position.x = 0;
+                    object.position.y = 0;
+                    object.position.z = 0;
+                    object.scale.set(1, 1, 1);
+                    myObj.scene.add(object);
+                },
+                // Function called when downloads progress
+                function ( xhr ) {
+                    console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+                },
+                // Function called when downloads error
+                function ( /* xhr */ ) {
+                    console.log( 'An error happened' );
+                }
+            );
         }
     };
 
@@ -151,4 +156,4 @@ window.onload = function() {
     //init();
 
     console.log("Everything is ready.");
-}();
+})();

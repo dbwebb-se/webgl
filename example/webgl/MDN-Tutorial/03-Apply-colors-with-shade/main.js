@@ -1,7 +1,10 @@
 /**
- * 03 Applying color with shade program
- */
-window.onload = function() {
+* 03 Applying color with shade program
+*/
+
+/* global makePerspective Matrix $V */
+
+window.onload = (function() {
     "use strict";
 
     var canvas;
@@ -28,24 +31,24 @@ window.onload = function() {
         // Only continue if WebGL is available and working
 
         if (gl) {
-        gl.clearColor(0.0, 0.0, 0.0, 1.0);  // Clear to black, fully opaque
-        gl.clearDepth(1.0);                 // Clear everything
-        gl.enable(gl.DEPTH_TEST);           // Enable depth testing
-        gl.depthFunc(gl.LEQUAL);            // Near things obscure far things
+            gl.clearColor(0.0, 0.0, 0.0, 1.0);  // Clear to black, fully opaque
+            gl.clearDepth(1.0);                 // Clear everything
+            gl.enable(gl.DEPTH_TEST);           // Enable depth testing
+            gl.depthFunc(gl.LEQUAL);            // Near things obscure far things
 
-        // Initialize the shaders; this is where all the lighting for the
-        // vertices and so forth is established.
+            // Initialize the shaders; this is where all the lighting for the
+            // vertices and so forth is established.
 
-        initShaders();
+            initShaders();
 
-        // Here's where we call the routine that builds all the objects
-        // we'll be drawing.
+            // Here's where we call the routine that builds all the objects
+            // we'll be drawing.
 
-        initBuffers();
+            initBuffers();
 
-        // Set up to draw the scene periodically.
+            // Set up to draw the scene periodically.
 
-        setInterval(drawScene, 15);
+            setInterval(drawScene, 15);
         }
     }
 
@@ -60,8 +63,8 @@ window.onload = function() {
 
         try {
             gl = canvas.getContext("experimental-webgl");
-        }
-        catch(e) {
+        } catch (e) {
+            console.log(e.message);
         }
 
         // If we don't have a GL context, give up now
@@ -78,7 +81,6 @@ window.onload = function() {
     // one object -- a simple two-dimensional square.
     //
     function initBuffers() {
-
         // Create a buffer for the square's vertices.
 
         squareVerticesBuffer = gl.createBuffer();
@@ -92,10 +94,10 @@ window.onload = function() {
         // coordinate is always 0 here.
 
         var vertices = [
-        1.0,  1.0,  0.0,
-        -1.0, 1.0,  0.0,
-        1.0,  -1.0, 0.0,
-        -1.0, -1.0, 0.0
+            1.0,  1.0,  0.0,
+            -1.0, 1.0,  0.0,
+            1.0,  -1.0, 0.0,
+            -1.0, -1.0, 0.0
         ];
 
         // Now pass the list of vertices into WebGL to build the shape. We
@@ -208,7 +210,7 @@ window.onload = function() {
         var theSource = "";
         var currentChild = shaderScript.firstChild;
 
-        while(currentChild) {
+        while (currentChild) {
             if (currentChild.nodeType == 3) {
                 theSource += currentChild.textContent;
             }
@@ -272,4 +274,4 @@ window.onload = function() {
     }
 
     start();
-}();
+})();

@@ -1,7 +1,7 @@
 /**
  * Draw on Canvas
  */
-window.onload = function() {
+window.onload = (function() {
     "use strict";
 
     var canvas = document.getElementById('canvas1');
@@ -17,4 +17,4 @@ window.onload = function() {
     ctx.fillRect(120, 10, 150, 190);
 
     console.log("Everything is ready.");
-}();
+})();

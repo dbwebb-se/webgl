@@ -1,7 +1,7 @@
 /**
  * Draw a triangle on Canvas
  */
-window.onload = function() {
+window.onload = (function() {
     "use strict";
 
     // Configure the canvas to use WebGL
@@ -85,8 +85,5 @@ window.onload = function() {
     // up the triangle
     gl.drawArrays(gl.TRIANGLES, 0, 3);
 
-
-
-
     console.log("Everything is ready.");
-}();
+})();

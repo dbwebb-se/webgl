@@ -1,7 +1,7 @@
 /**
  * Draw on Canvas
  */
-window.onload = function() {
+window.onload = (function() {
     "use strict";
 
     var mousePressed = false;
@@ -27,7 +27,7 @@ window.onload = function() {
         canvas.onmouseup = function () {
             mousePressed = false;
         };
-	    canvas.mouseleave = function () {
+        canvas.mouseleave = function () {
             mousePressed = false;
         };
     }
@@ -58,4 +58,4 @@ window.onload = function() {
     init();
 
     console.log("Everything is ready.");
-}();
+})();

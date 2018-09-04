@@ -1,7 +1,10 @@
 /**
  * Draw on Canvas
  */
-window.onload = function() {
+
+/* global getWebGLContext */
+
+window.onload = (function() {
     "use strict";
 
     var canvas = document.getElementById('canvas1');
@@ -18,4 +21,4 @@ window.onload = function() {
     gl.clear(gl.COLOR_BUFFER_BIT);
 
     console.log("Everything is ready.");
-}();
+})();

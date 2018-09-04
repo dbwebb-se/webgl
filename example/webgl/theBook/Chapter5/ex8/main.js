@@ -2,7 +2,10 @@
  * Draw on Canvas
  */
 
-window.onload = function() {
+/* global getWebGLContext initShaders */
+
+
+window.onload = (function() {
     "use strict";
 
     var VSHADER_SOURCE =
@@ -119,7 +122,10 @@ window.onload = function() {
             return false;
         }
         // Register the event handler to be called on loading an image
-        image.onload = function(){ loadTexture(gl, n, texture, u_Sampler, image); };
+        image.onload = function() {
+            loadTexture(gl, n, texture, u_Sampler, image);
+        };
+
         // Tell the browser to load an image
         image.src = '../../images/sky.jpg';
 
@@ -148,5 +154,5 @@ window.onload = function() {
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, n); // Draw the rectangle
     }
 
-        console.log("Everything is ready.");
-    }();
+    console.log("Everything is ready.");
+})();

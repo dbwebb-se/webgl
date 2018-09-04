@@ -1,7 +1,10 @@
 /**
  * Draw on Canvas
  */
-window.onload = function() {
+
+/* global THREE */
+
+window.onload = (function() {
     "use strict";
 
     var canvas = document.getElementById("canvas1");
@@ -62,7 +65,5 @@ window.onload = function() {
 
     render();
 
-
-
     console.log("Everything is ready.");
-}();
+})();

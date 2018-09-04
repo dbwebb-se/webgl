@@ -1,7 +1,10 @@
 /**
- * Draw on Canvas
- */
-window.onload = function() {
+* Draw on Canvas
+*/
+
+/* global THREE Stats */
+
+window.onload = (function() {
     "use strict";
 
     var myObj = {
@@ -14,13 +17,12 @@ window.onload = function() {
         stats: null,
 
         init: function() {
-
             // Create the main scene
             this.scene = new THREE.Scene();
             this.scene.fog = new THREE.FogExp2(0xcce0ff, 0.0003);
 
-            var SCREEN_WIDTH = window.innerWidth,
-                SCREEN_HEIGHT = window.innerHeight;
+            var SCREEN_WIDTH = window.innerWidth;
+            var SCREEN_HEIGHT = window.innerHeight;
 
             // Prepare camera
             var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 2000;
@@ -38,7 +40,7 @@ window.onload = function() {
             this.renderer.shadowMapSoft = true;
 
             // events
-            THREEx.WindowResize(this.renderer, this.camera);
+            THREE.WindowResize(this.renderer, this.camera);
 
             // Prepare container
             this.container = document.createElement('div');
@@ -74,17 +76,21 @@ window.onload = function() {
         loadModel: function() {
             // prepare loader and load the model
             var oLoader = new THREE.OBJMTLLoader();
-            oLoader.load('objects/BTHRobot.obj', 'objects/BTHRobot.mtl', function(object) {
-            myObj.scene.add(object);
-        },
-    	// Function called when downloads progress
-    	function ( xhr ) {
-    		console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
-    	},
-    	// Function called when downloads error
-    	function ( /* xhr */ ) {
-    		console.log( 'An error happened' );
-    	});
+            oLoader.load(
+                'objects/BTHRobot.obj',
+                'objects/BTHRobot.mtl',
+                function (object) {
+                    myObj.scene.add(object);
+                },
+                // Function called when downloads progress
+                function ( xhr ) {
+                    console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+                },
+                // Function called when downloads error
+                function ( /* xhr */ ) {
+                    console.log( 'An error happened' );
+                }
+            );
         }
     };
 
@@ -116,4 +122,4 @@ window.onload = function() {
 
     init();
     console.log("Everything is ready.");
-}();
+})();

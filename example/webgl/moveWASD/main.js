@@ -1,7 +1,10 @@
 /**
  * Draw on Canvas
  */
-window.onload = function() {
+
+/* global mat4 */
+
+window.onload = (function() {
     "use strict";
 
     var gl;
@@ -12,7 +15,9 @@ window.onload = function() {
             gl.viewportWidth = canvas.width;
             gl.viewportHeight = canvas.height;
         } catch (e) {
+            console.log(e.message);
         }
+
         if (!gl) {
             alert("Could not initialise WebGL, sorry :-(");
         }
@@ -72,7 +77,9 @@ window.onload = function() {
 
         gl.useProgram(shaderProgram);
 
-        shaderProgram.vertexPositionAttribute = gl.getAttribLocation(shaderProgram, "aVertexPosition");
+        shaderProgram.vertexPositionAttribute = gl.getAttribLocation(
+            shaderProgram,
+            "aVertexPosition");
         gl.enableVertexAttribArray(shaderProgram.vertexPositionAttribute);
 
         shaderProgram.textureCoordAttribute = gl.getAttribLocation(shaderProgram, "aTextureCoord");
@@ -101,8 +108,8 @@ window.onload = function() {
         mudTexture = gl.createTexture();
         mudTexture.image = new Image();
         mudTexture.image.onload = function () {
-            handleLoadedTexture(mudTexture)
-        }
+            handleLoadedTexture(mudTexture);
+        };
 
         mudTexture.image.src = "img/test.png";
     }
@@ -112,7 +119,7 @@ window.onload = function() {
     //var mvMatrixStack = [];
     var pMatrix = mat4.create();
 
-/*
+    /*
     function mvPushMatrix() {
         var copy = mat4.create();
         mat4.set(mvMatrix, copy);
@@ -125,7 +132,7 @@ window.onload = function() {
         }
         mvMatrix = mvMatrixStack.pop();
     }
-*/
+    */
 
     function setMatrixUniforms() {
         gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, pMatrix);
@@ -193,7 +200,6 @@ window.onload = function() {
         } else {
             speed = 0;
         }
-
     }
 
 
@@ -244,7 +250,8 @@ window.onload = function() {
             if (request.readyState == 4) {
                 handleLoadedWorld(request.responseText);
             }
-        }
+        };
+
         request.send();
     }
 
@@ -271,10 +278,22 @@ window.onload = function() {
         gl.uniform1i(shaderProgram.samplerUniform, 0);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, worldVertexTextureCoordBuffer);
-        gl.vertexAttribPointer(shaderProgram.textureCoordAttribute, worldVertexTextureCoordBuffer.itemSize, gl.FLOAT, false, 0, 0);
+        gl.vertexAttribPointer(
+            shaderProgram.textureCoordAttribute,
+            worldVertexTextureCoordBuffer.itemSize,
+            gl.FLOAT,
+            false,
+            0,
+            0);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, worldVertexPositionBuffer);
-        gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, worldVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
+        gl.vertexAttribPointer(
+            shaderProgram.vertexPositionAttribute,
+            worldVertexPositionBuffer.itemSize,
+            gl.FLOAT,
+            false,
+            0,
+            0);
 
         setMatrixUniforms();
         gl.drawArrays(gl.TRIANGLES, 0, worldVertexPositionBuffer.numItems);
@@ -294,14 +313,15 @@ window.onload = function() {
                 xPos -= Math.sin(degToRad(yaw)) * speed * elapsed;
                 zPos -= Math.cos(degToRad(yaw)) * speed * elapsed;
 
-                joggingAngle += elapsed * 0.6; // 0.6 "fiddle factor" - makes it feel more realistic :-)
-                yPos = Math.sin(degToRad(joggingAngle)) / 20 + 0.4
+                // 0.6 "fiddle factor" - makes it feel more realistic :-)
+                joggingAngle += elapsed * 0.6;
+                yPos = Math.sin(degToRad(joggingAngle)) / 20 + 0.4;
             }
 
             yaw += yawRate * elapsed;
             pitch += pitchRate * elapsed;
-
         }
+
         lastTime = timeNow;
     }
 
@@ -330,6 +350,8 @@ window.onload = function() {
 
         tick();
     }
+
     webGLStart();
+
     console.log("Everything is ready.");
-}();
+})();
