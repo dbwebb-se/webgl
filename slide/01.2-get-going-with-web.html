@@ -22,7 +22,8 @@
 <script data-role="slide" type="text/html">
 <h1>webgl kmom01</h1>
 <h2>Kom igång med JavaScript och WebGL</h2>
-<h3>Mikael Roos</h3>
+<!-- <h3>Mikael Roos</h3> -->
+<h3>Emil Folino, efo</h3>
 </script>
 
 
@@ -95,12 +96,12 @@ $ dbwebb publish kmom01
 <h1>En sandbox för testprogram</h1>
 <pre>
 $ tree sandbox/
-sandbox/                                  
-├── index.html                            
-├── main.js                               
-└── style.css                             
- 
-0 directories, 3 files                    
+sandbox/
+├── index.html
+├── main.js
+└── style.css
+
+0 directories, 3 files
 </pre>
 </script>
 
@@ -114,26 +115,29 @@ sandbox/
 
 
 <script id="index.html" data-role="code" data-language="php" type="text/html">
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Sandbox</title>
-</head>
-<body>
-    <main>
-        <h1>Sandbox</h1>
-        <canvas id="canvas1" width="800" height="500"></canvas>
-    </main>
+    <!doctype html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Sandbox</title>
+    </head>
+    <body>
+        <main>
+            <h1>Sandbox</h1>
+            <canvas id="canvas1" width="800" height="500"></canvas>
+        </main>
 
-    <footer>
-        <p>Validators: 
-            <a href="http://validator.w3.org/check/referer">HTML5</a>
-        </p>
-    </footer>
+        <footer>
+            <p>Validators:
+                <a href="http://validator.w3.org/check/referer">HTML5</a>
+                <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a>
+                <a href="http://validator.w3.org/unicorn/check?ucn_uri=referer&amp;ucn_task=conformance">Unicorn</a>
+                <a href="http://jshint.com/">JSHint</a>
+            </p>
+        </footer>
 
-    <script type="text/javascript" src="main.js"></script>
+        <script type="text/javascript" src="main.js"></script>
 </script>
 
 
@@ -146,31 +150,31 @@ sandbox/
 
 
 <script id="style.css" data-role="code" data-language="css" type="text/html">
-html {
-    background-color: #ccc;
-}    
+    html {
+        background-color: #ccc;
+    }
 
-main {
-    margin: 8px auto;
-    width: 900px;
-    background-color: #eee;
-    padding: 1em;
-    border: 1px solid #999;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px 5px #999;
-}
+    main {
+        margin: 8px auto;
+        width: 900px;
+        background-color: #eee;
+        padding: 1em;
+        border: 1px solid #999;
+        border-radius: 10px;
+        box-shadow: 5px 5px 5px 5px #999;
+    }
 
-footer {
-    padding-top: 1em;
-    text-align: center;
-}
+    footer {
+        padding-top: 1em;
+        text-align: center;
+    }
 
-#canvas1 {
-    display: block;
-    margin: 20px auto;
-    border: 1px solid #999;
-    background-color: #fff;
-}
+    #canvas1 {
+        display: block;
+        margin: 20px auto;
+        border: 1px solid #999;
+        background-color: #fff;
+    }
 </script>
 
 
@@ -183,27 +187,27 @@ footer {
 
 
 <script id="main.js" data-role="code" data-language="javascript" type="text/html">
-window.onload = function() {
-    "use strict";
+    window.onload = function() {
+        "use strict";
 
-    var canvas, ct;
+        var canvas, ct;
 
-    // Get the HTML element to work with
-    canvas = document.getElementById("canvas1");
+        // Get the HTML element to work with
+        canvas = document.getElementById("canvas1");
 
-    // Create a 2D context on the canvas
-    ct = canvas.getContext("2d");
+        // Create a 2D context on the canvas
+        ct = canvas.getContext("2d");
 
-    // Draw a text on canvas
-    ct.font = "48px serif";
-    ct.strokeText("My Canvas Sandbox", 10, 50);
+        // Draw a text on canvas
+        ct.font = "48px serif";
+        ct.strokeText("My Canvas Sandbox", 10, 50);
 
-    // Draw a rectangle
-    ct.fillStyle = "green";
-    ct.fillRect(100, 100, 200, 300);
+        // Draw a rectangle
+        ct.fillStyle = "green";
+        ct.fillRect(100, 100, 200, 300);
 
-    console.log("Everything is ready.");
-}();
+        console.log("Everything is ready.");
+    };
 </script>
 
 
@@ -224,7 +228,7 @@ window.onload = function() {
 <script id="canvas2" data-role="code" data-language="javascript" type="text/html">
 // Get the HTML element to work with
 canvas = document.getElementById("canvas1");
- 
+
 // Create a 2D context on the canvas
 ct = canvas.getContext("2d");
 </script>
@@ -233,11 +237,22 @@ ct = canvas.getContext("2d");
 
 <script data-role="slide" type="text/html">
 <h1>Validera och publicera</h1>
+
+<code>dbwebb validate</code>
+
 <ul>
     <li>HTML (w3c, htmlhint, htmlminifier)</li>
     <li>CSS (w3c, csslint, cleancss)</li>
     <li>JavaScript (jshint, jscs, uglifyjs)</li>
 </ul>
+</script>
+
+
+
+<script data-role="slide" type="text/html">
+<h1>Validera JavaScript moduler</h1>
+
+<code>/* global modul */</code>
 </script>
 
 
@@ -255,13 +270,6 @@ ct = canvas.getContext("2d");
 
 
 <script data-role="slide" type="text/html">
-<iframe height='768' scrolling='no' src='//codepen.io/mosbth/embed/qOPKyq/?height=768&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/mosbth/pen/qOPKyq/'>Hello World</a> by Mikael Roos (<a href='http://codepen.io/mosbth'>@mosbth</a>) on <a href='http://codepen.io'>CodePen</a>.
-</iframe>
-</script>
-
-
-
-<script data-role="slide" type="text/html">
 <p><a href="http://codepen.io/search/pens?q=webgl&limit=all&type=type-pens" target="_blank">Codepen sök på webgl</a></p>
 </script>
 
@@ -269,8 +277,15 @@ ct = canvas.getContext("2d");
 
 
 <script data-role="slide" type="text/html">
-<h1>En mesida</h1>
-<iframe src="http://dbwebb.se/webgl/repo/example/me" width="1024" height="768" frameborder="0"></iframe>
+<h1>Portfölj</h1>
+<iframe src="http://dbwebb.se/webgl/repo/example/portfolio" width="1024" height="768" frameborder="0"></iframe>
+</script>
+
+
+
+<script data-role="slide" type="text/html">
+<h1>Portfölj</h1>
+<a href="https://www.youtube.com/watch?v=irHFOihkPls&list=PLKtP9l5q3ce_JgJqI31cZeBMnjH1JUUoU&index=4" target="_blank">Spellista youtube</a>
 </script>
 
 
