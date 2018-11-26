@@ -44,7 +44,7 @@ window.onload = function() {
 
 
     // Lookup fragment data
-    var u_Sampler = gl.getUniformLocation(gl.program, 'u_Sampler');
+    var u_Sampler = gl.getUniformLocation(program, 'u_Sampler');
 
 
 
