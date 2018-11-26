@@ -155,7 +155,7 @@ function setGeometryRectangleTexture(gl) {
         usage:      gl.STATIC_DRAW,
         mode:       gl.TRIANGLE_STRIP,
         fsize:      null,
-        //texture:  "../img/sky.jpg".
+        // texture:  "../img/sky.jpg",
         texture:    "../img/mos_256x256.jpg",
         n:          4,
         vertex:     new Float32Array([
