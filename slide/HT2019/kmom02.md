@@ -74,3 +74,5 @@ Se till att använda exempelprogrammen.
 Nya strukturen med shaders i `index.html` och nytt lib.
 
 Eventhantering och styling av knappar.
+
+Animationsloop
