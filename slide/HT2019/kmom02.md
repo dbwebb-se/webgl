@@ -8,6 +8,8 @@
 
 Ni har erfarenhet med structs från C och C++.
 
+Vi skapar `dice`.
+
 
 
 ## Funktioner
@@ -17,6 +19,8 @@ Definition
 Scope
 
 First-class Objects
+
+Lägg till funktioner på dice.
 
 
 
@@ -28,14 +32,25 @@ Stå i kursprepot och gör `dbwebb update` och kopiera sedan filerna till din me
 cp -r slide/HT2019 me/kmom02/
 ```
 
-Skapa ett lamp objekt med ett attribut `light`.
+I filen `main.js` skapa ett `lamp` objekt med ett attribut `light`.
 
 Lägg efter det till två funktioner `turnOn()` och `turnOff()`, som tänder och släcker lampan.
 
-Lägg till en funktion som skriver ut ett
+Lägg till en ytterligare en funktion som skriver ut ett trevligt meddelande med hjälp av `console.log()` om lampan är släckt eller tänt.
 
 
 
 ## Array
 
 [MDN Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+Lägg till `history` på dice.
+
+
+
+## Veckans uppgifter
+
+* 2 labbar
+* Snurrande triangler
+
+Se till att använda exempelprogrammen.
