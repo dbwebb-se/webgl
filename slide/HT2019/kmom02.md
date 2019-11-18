@@ -8,6 +8,8 @@
 
 Ni har erfarenhet med structs från C och C++.
 
+[MDN Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object).
+
 Vi skapar `dice`.
 
 
@@ -15,6 +17,8 @@ Vi skapar `dice`.
 ## Funktioner
 
 Definition
+
+[MDN Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function).
 
 Scope
 
@@ -48,9 +52,25 @@ Lägg till `history` på dice.
 
 
 
+### Uppgift
+
+Lägg till `history` även på din lampa. För varje gång `turnOn` eller `turnOff` anropas lägg ett objekt i `history`-arrayen.
+
+Objektet ska innehålla om lampan sattes på eller släcktes och när. Tips: Använd `new Date()` för att få nuvarande tid.
+
+
+
+## Eftermiddagskaffe
+
+
+
 ## Veckans uppgifter
 
 * 2 labbar
-* Snurrande triangler
+* Snurrande trianglar
 
 Se till att använda exempelprogrammen.
+
+Nya strukturen med shaders i `index.html` och nytt lib.
+
+Eventhantering och styling av knappar.
