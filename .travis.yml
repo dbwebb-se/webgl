@@ -21,15 +21,6 @@ git:
 
 
 
-addons:
-    apt:
-        sources:
-        - debian-sid    # Grab ShellCheck from the Debian repo
-        packages:
-        - shellcheck
-
-
-
 env:
     - TEST_DIR=example/nodejs/
 
