@@ -8,9 +8,9 @@ class Color {
 
     // Methods
     calculateHexCode() {
-        const red = this.red.toString(16);
-        const green = this.green.toString(16);
-        const blue = this.blue.toString(16);
+        const red = Math.ceil(this.red * 255).toString(16);
+        const green = Math.ceil(this.green * 255).toString(16);
+        const blue = Math.ceil(this.blue * 255).toString(16);
 
         return `#${red}${green}${blue}`;
     }
